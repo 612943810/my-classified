@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR.'comp1230'.DIRECTORY_SEPARATOR.'assignments'.DIRECTORY_SEPARATOR.'assignment2'.DIRECTORY_SEPARATOR.'model'.DIRECTORY_SEPARATOR.'categoryDatabase.php');
+require_once(__DIR__.'/../model/categoryDatabase.php');
 class CategoryController extends categoryDatabase
 {
     private $categoryTitle;
