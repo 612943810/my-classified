@@ -10,7 +10,7 @@ class User extends DatabaseConnect
          session_start();
         $_SESSION['adminText']="Dashboard";
         $_SESSION['logoutText']="Logout";
-     $sqlStatement="SELECT * FROM `assignment2_members` WHERE id=1 ";
+     $sqlStatement="SELECT * FROM `my-classified-members` WHERE id=1 ";
         $prepareSQL=$this->prepare($sqlStatement);
         $prepareSQL->execute();
         $sqlData=$prepareSQL->fetch();
@@ -19,7 +19,7 @@ class User extends DatabaseConnect
         $_SESSION['userPassword']=$sqlData['password'];
          if (isset($sqlData['username'])&&  isset($sqlData['password'])) {
           
-            header('Location: https://'.$_SERVER['SERVER_NAME'].'/comp1230/assignments/assignment2/view/adminArea.php');
+            header('Location: https://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'].'./../../view/adminArea.php');
          }
         show_source(__FILE__);
     }
@@ -28,10 +28,13 @@ class User extends DatabaseConnect
 session_start();
   unset($_SESSION['logoutText']);
   unset($_SESSION['adminText']);
-   ('Location: https://'.$_SERVER['REQUEST_URI'].'./view/login.php');
+  session_destroy();
+  if (!isset($_SESSION['userName'])) {
+   header('Location: https://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'].'./../../view/login.php');
     
 }
 
 }
 
 
+}

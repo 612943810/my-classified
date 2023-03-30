@@ -1,7 +1,7 @@
 <?php
 //This page modifies the categories for admin.
-require_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR.'comp1230'.DIRECTORY_SEPARATOR.'assignments'.DIRECTORY_SEPARATOR.'assignment2'.DIRECTORY_SEPARATOR.'controller'.DIRECTORY_SEPARATOR.'categoryController.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR.'comp1230'.DIRECTORY_SEPARATOR.'assignments'.DIRECTORY_SEPARATOR.'assignment2'.DIRECTORY_SEPARATOR.'view'.DIRECTORY_SEPARATOR.'navigation.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'controller'.DIRECTORY_SEPARATOR.'categoryController.php');
+require_once(__DIR__ .DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'view'.DIRECTORY_SEPARATOR.'navigation.php');
 $categoryDisplay=new categoryController();
 $categoryDisplay->modifyCategoriesOutput('submitModify','cancelModify','modifyText','modifyDescription');
 navigationBar();

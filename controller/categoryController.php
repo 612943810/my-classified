@@ -23,7 +23,7 @@ class CategoryController extends categoryDatabase
     //This function modifies a category.
     public function modifyCategoriesOutput($modifyButton,$cancelButton, $title, $descriptionItem)
     {
-        session_start();
+ 
         if (isset($_POST[$modifyButton])) {
             $_SESSION['categoryTitle'] = $_POST[$title];
             $_SESSION['categoryDescription'] = $_POST[$descriptionItem];
