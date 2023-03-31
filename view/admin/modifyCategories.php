@@ -4,7 +4,7 @@ require_once(__DIR__ . DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'controller'
 require_once(__DIR__ .DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'view'.DIRECTORY_SEPARATOR.'navigation.php');
 $categoryDisplay=new categoryController();
 $categoryDisplay->modifyCategoriesOutput('submitModify','cancelModify','modifyText','modifyDescription');
-navigationBar();
+require_once('./navigation.php');
 ?> 
  <h1 class="form-check-inline">Modify category</h1>
 <form class="form-group" action="" method="post"> 

@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/comp1230/assignments/assignment2/cont
 require_once('./navigation.php');
 $categoryData=new categoryController();
  $categoryData ->addCategoriesOutput('submitLink','cancelLink','textInput','descriptionInput');
-navigationBar();  
+  
 ?>
 <form class="form-group" action=""name="categoryForm" method="post">
 <div class="form-group">

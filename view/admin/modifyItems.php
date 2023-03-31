@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR.'comp1230'.DIRECTOR
 require_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR.'comp1230'.DIRECTORY_SEPARATOR.'assignments'.DIRECTORY_SEPARATOR.'assignment2'.DIRECTORY_SEPARATOR.'model'.DIRECTORY_SEPARATOR.'itemDatabase.php');
 $categoryDisplay=new ItemController();
 $categoryDisplay->modifyItemOutput('submitModify','modifyText','modifyDescription','imageValue','modifyPrice');
-navigationBar();
+
 ?> 
  <h1 class="form-check-inline">Modify Item</h1>
 <form class="form-group" action="" method="post"> 

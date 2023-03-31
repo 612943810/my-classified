@@ -26,13 +26,13 @@ class User extends DatabaseConnect
     //This function logs out of the  website
     function logoutSession(){
 session_start();
-  unset($_SESSION['logoutText']);
-  unset($_SESSION['adminText']);
+//   unset($_SESSION['logoutText']);
+//   unset($_SESSION['adminText']);
   session_destroy();
-  if (!isset($_SESSION['userName'])) {
-   header('Location: https://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'].'./../../view/login.php');
+//   if (!isset($_SESSION['userName'])) {
+   header('Location: ../index.php');
     
-}
+// }
 
 }
 

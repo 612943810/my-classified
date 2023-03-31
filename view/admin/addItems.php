@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/comp1230/assignments/assignment2/cont
 require_once('./navigation.php');
 $itemyData=new ItemController();
  $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionInput','priceEntry','imageValue');
-navigationBar();
+
 
    
 ?>

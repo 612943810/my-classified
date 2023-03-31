@@ -50,7 +50,7 @@
                 ?>
               
         <form action="./logout.php">
-               <button class='nav-link active text-warning navbar-nav navbar-right' >Login</button>
+               <button class='nav-link active text-warning navbar-nav navbar-right brn btn-success' >Log Out</button>
         </form>
         <?php
                  }
