@@ -3,7 +3,6 @@
 
  include_once(__DIR__.'/../controller/categoryController.php');
 require_once('./navigation.php');
-navigationBar();  
 ?>
 <html lang='en'>
 <head>
@@ -30,5 +29,4 @@ $displayCategoriesTwo->displayCategoryResults();
 </body>
 </html>
 <?php
-show_source(__FILE__);
 ?>

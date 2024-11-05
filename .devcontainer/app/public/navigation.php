@@ -10,7 +10,7 @@
            <div class='navbar-expand' id='mainNavigation'>
                <ul class='navbar-nav'>
                    <li class='nav-item active nav-pills bg-bg-light'>
-                       <a class='nav-link text-warning active ' href='./index.php'>Home <span class='sr-only'></span></a>
+                       <a class='nav-link text-warning active ' href='index.php'>Home <span class='sr-only'></span></a>
                    </li>   
                    <?php
                    if (session_status()==PHP_SESSION_ACTIVE) {
