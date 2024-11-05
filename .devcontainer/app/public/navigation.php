@@ -16,7 +16,7 @@
                    if (session_status()==PHP_SESSION_ACTIVE) {
                     ?>
                         <li class='nav-item col'>
-                       <a class='nav-link text-warning' href='./view/viewItemsAdmin.php'>Items</a>
+                       <a class='nav-link text-warning' href='./view/viewItems.php'>Items</a>
                    </li>
                    <?php
                    }

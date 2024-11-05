@@ -2,7 +2,6 @@
 //This page is the admin items view page.
 include_once($_SERVER['DOCUMENT_ROOT'] . '/comp1230/assignments/assignment2/controller/categoryController.php');
 require_once('./navigation.php');
-navigationBar();  
 ?>
 
 <div class="row">
@@ -26,6 +25,3 @@ $displayCategories->displayCategoryResults();
 </body>
 
 </html>
-<?php
-show_source(__FILE__);
-?>
