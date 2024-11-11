@@ -2,7 +2,7 @@
 //This is the viewq tems for admin.
 
  include_once(__DIR__.'/../controller/categoryController.php');
-require_once('./navigation.php');
+require_once('../navigation.php');
 ?>
 <html lang='en'>
 <head>
