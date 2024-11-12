@@ -24,6 +24,3 @@ require_once('./navigation.php');
 </form> 
 </body>
 </html>
-<?php
-show_source(__FILE__);
-?>

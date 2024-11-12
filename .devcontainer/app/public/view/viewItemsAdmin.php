@@ -28,5 +28,3 @@ $displayCategoriesTwo->displayCategoryResults();
 </article>
 </body>
 </html>
-<?php
-?>

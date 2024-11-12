@@ -26,6 +26,3 @@ $categoryData=new categoryController();
 </form>   
 </body>
 </html>
-<?php
-show_source(__FILE__);
-?>

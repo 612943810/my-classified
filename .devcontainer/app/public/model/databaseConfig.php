@@ -32,7 +32,6 @@ class DatabaseConnect extends PDO{
         $this->databaseUserPassword = $databaseUserPassword;
 
         return $this;
-        show_source(__FILE__);
     }
     }
 

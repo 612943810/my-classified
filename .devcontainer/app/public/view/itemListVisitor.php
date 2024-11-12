@@ -5,5 +5,4 @@ $itemList=new itemsDatabase();
 require_once('./navigation.php');
 
 $itemList->displayItemsResults();
-show_source(__FILE__);
 ?>

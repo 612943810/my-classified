@@ -27,6 +27,3 @@ $categoryDisplay->modifyItemOutput('submitModify','modifyText','modifyDescriptio
 </form> 
 </body>
 </html>
-<?php
-show_source(__FILE__);
-?>

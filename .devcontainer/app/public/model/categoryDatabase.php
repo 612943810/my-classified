@@ -109,4 +109,3 @@ class categoryDatabase extends DatabaseConnect{
     return $this;
   }
        }
-show_source(__FILE__);

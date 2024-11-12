@@ -47,6 +47,3 @@ $displayCategories->displayCategoryResults();
 </form>   
 </body>
 </html>
-<?php
-show_source(__FILE__);
-?>
