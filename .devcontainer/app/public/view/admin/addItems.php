@@ -1,16 +1,22 @@
 <?
 //This script displays the add item for admin.
-require_once($_SERVER['DOCUMENT_ROOT'] . '/comp1230/assignments/assignment2/controller/itemController.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/comp1230/assignments/assignment2/controller/categoryController.php');
-
-require_once('./navigation.php');
+require_once(__DIR__. '/../../controller/itemController.php');
+require_once(__DIR__ . '/../../controller/categoryController.php');
+require_once(__DIR__.'/../../view/navigation.php');
 $itemyData=new ItemController();
  $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionInput','priceEntry','imageValue');
 
 
    
 ?>
-
+ <html lang='en'>
+<head>
+       <meta charset='UTF-8'>
+       <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+       <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+       <title>My Classified</title>
+       <link rel='stylesheet' href='/css/bootstrap.css'>
+   </head>
 <form class="form-group" action=""name="categoryForm" method="post" enctype="multipart/form-data">
 <div class="form-group">
 <h1 class="lead">Add new Item</h1>

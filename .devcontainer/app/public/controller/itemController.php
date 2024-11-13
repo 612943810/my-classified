@@ -1,5 +1,7 @@
-<?php
-require_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'comp1230' . DIRECTORY_SEPARATOR . 'assignments' . DIRECTORY_SEPARATOR . 'assignment2' . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'itemDatabase.php');
+<?php  
+session_start();
+require_once(__DIR__. '/./../model/itemDatabase.php');
+
 class ItemController extends DatabaseConnect
 {
     private $categoryTitle;
@@ -7,7 +9,7 @@ class ItemController extends DatabaseConnect
 
     public function addItemsOutput($categoryDropdown, $submitButton, $title, $descriptionItem, $priceEntry, $imageInput)
     {
-        session_start();
+      
         if (isset($_POST[$submitButton])) {
             $_SESSION['imageEntry'] = file_get_contents($_FILES[$imageInput]['name']);
             $_SESSION['itemTitle'] = $_POST[$title];
@@ -26,7 +28,7 @@ class ItemController extends DatabaseConnect
             $categoryOperations->addItems($categoryTotalQuery['id']);
 
 
-            header('Location: https://' . $_SERVER['SERVER_NAME'] . '/comp1230/assignments/assignment2/view/viewItems.php');
+            header('Location: https://' . __DIR__. '/../view/viewItems.php');
             print('<p class="alert alert-success" role="alert">Sucesss<p>');
 
             $sqlQuery->closeCursor();
@@ -44,7 +46,7 @@ class ItemController extends DatabaseConnect
                 $_SESSION['imageEntry'] = $_FILES[$imageInput]['name'];
                 $_SESSION['itemPrice'] = $_POST[$priceItem];
 
-                header('Location: https://' . $_SERVER['SERVER_NAME'] . '/comp1230/assignments/assignment2/view/viewItemsAdmin.php');
+                header('Location: https://' . __DIR__ . '/../../view/viewItems');
             }
             $categoryOperations = new itemsDatabase();
             $categoryOperations->modifyItems($modifyButton, $title, $descriptionItem, $_SESSION['imageEntry'], $priceItem);

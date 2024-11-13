@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/comp1230/assignments/assignment2/model/databaseConfig.php');
+require_once(__DIR__. '/../model/databaseConfig.php');
 
 
 class itemsDatabase extends DatabaseConnect

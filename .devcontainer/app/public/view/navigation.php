@@ -10,23 +10,16 @@
            <div class='navbar-expand' id='mainNavigation'>
                <ul class='navbar-nav'>
                    <li class='nav-item active nav-pills bg-bg-light'>
-                       <a class='nav-link text-warning active ' href='index.php'>Home <span class='sr-only'></span></a>
+                       <a class='nav-link text-warning active ' href='/../index.php'>Home <span class='sr-only'></span></a>
                    </li>   
-                   <?php
-                   if (session_status()==PHP_SESSION_ACTIVE) {
-                    ?>
+
                         <li class='nav-item col'>
-                       <a class='nav-link text-warning' href='./view/viewItems.php'>Items</a>
+                       <a class='nav-link text-warning' href='/../view/viewItems.php'>Items</a>
                    </li>
-                   <?php
-                   }
-                   ?>
-                   <li class='nav-item col'>
-                       <a class='nav-link text-warning' href='./view/viewItemsAdmin.php'>Items</a>
-                   </li>
+
    
                    <li class='nav-item dropdown col-4 '>
-                       <a class='nav-link dropdown-toggle text-warning' href='../view/viewCategory.php' id='dropdownMenu'>Categories</a>
+                       <a class='nav-link dropdown-toggle text-warning' href='/../view/viewCategory.php' id='dropdownMenu'>Categories</a>
                    </li>
                    <li class='nav-item dropdown col-6 '>
                        <a class='nav-link text-warning' href='searchFormAdmin.php' id=''>Search</a>
