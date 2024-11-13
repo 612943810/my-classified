@@ -8,7 +8,7 @@ navigationBar();
 ?>
 <h1>Categories</h1>
 
-<button type="button" class="btn btn-warning float-md-right btn-toolbar"><a href="./addCategory.php">Add New Category</a></button>
+<button type="button" class="btn btn-warning float-md-right btn-toolbar"><a href="<?php __DIR__.'/view/admin/addCategory.php'>">Add New Category</a></button>
 
 
 </ul>

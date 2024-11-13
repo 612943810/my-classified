@@ -1,6 +1,6 @@
 <?php
 //This script displays the add category for admin.
-require_once($_SERVER['DOCUMENT_ROOT'] . '/comp1230/assignments/assignment2/controller/categoryController.php');
+require_once(__DIR__. '/controller/categoryController.php');
 
 require_once('./navigation.php');
 $categoryData=new categoryController();
