@@ -4,11 +4,8 @@ require_once(__DIR__. '/../../controller/itemController.php');
 require_once(__DIR__ . '/../../controller/categoryController.php');
 require_once(__DIR__.'/../../view/navigation.php');
 $itemyData=new ItemController();
- $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionInput','priceEntry','imageValue');
-
-
-   
-?>
+$itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionInput','priceEntry','imageValue');
+ ?>
  <html lang='en'>
 <head>
        <meta charset='UTF-8'>
@@ -17,6 +14,7 @@ $itemyData=new ItemController();
        <title>My Classified</title>
        <link rel='stylesheet' href='/css/bootstrap.css'>
    </head>
+   <body>
 <form class="form-group" action=""name="categoryForm" method="post" enctype="multipart/form-data">
 <div class="form-group">
 <h1 class="lead">Add new Item</h1>

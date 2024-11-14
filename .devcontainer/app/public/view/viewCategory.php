@@ -1,14 +1,22 @@
 <?php
 //This page views categories for admin.
-session_start();
-include_once($_SERVER['DOCUMENT_ROOT'] . '/comp1230/assignments/assignment2/controller/categoryController.php');
-require_once('./navigation.php');
-navigationBar();
-
+include_once(__DIR__. '/../controller/categoryController.php');
+require_once(__DIR__. '/../view/navigation.php'); 
+include_once(__DIR__.'/../model/categoryDatabase.php');
 ?>
+ <html lang='en'>
+<head>
+       <meta charset='UTF-8'>
+       <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+       <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+       <title>My Classified</title>
+       <link rel='stylesheet' href='./../css/bootstrap.css'>
+   </head>
+ 
+   <body>
 <h1>Categories</h1>
 
-<button type="button" class="btn btn-warning float-md-right btn-toolbar"><a href="<?php __DIR__.'/view/admin/addCategory.php'>">Add New Category</a></button>
+<button type="button" class="btn btn-warning float-md-right btn-toolbar"><a href="/view/admin/addCategory.php">Add New Category</a></button>
 
 
 </ul>
@@ -23,16 +31,12 @@ navigationBar();
       <tr>
     
           <?php
- include_once('../model/categoryDatabase.php');
+
 $displayCategories=new categoryDatabase();
 $displayCategories->displayCategoryResults();  
  ?> 
         
-
-
-  </tbody>  
-
+</tbody>  
 </table>
 </body>
-
 </html>

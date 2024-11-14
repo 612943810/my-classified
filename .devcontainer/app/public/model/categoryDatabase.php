@@ -6,13 +6,14 @@ class categoryDatabase extends DatabaseConnect{
  
   private $totalQuery;
 
-    public function addCategories()
+    public function addCategories($name,$description)
     {
          //This function runs the add  queries.
-            $sqlStatments = "INSERT INTO `my-classified-category`(`id`, `name`, `description`) VALUES (NULL,:categoryTitle,:categoryDescription)";
+            $sqlStatments = "INSERT INTO `my-classified-category`(`id`, `name`, `description`) VALUES (NULL,:categoryName,:categoryDescription)";
             $sqlQuery = $this->prepare($sqlStatments);
-            $sqlQuery->bindValue(':categoryTitle', $_SESSION['categoryTitle']);
-            $sqlQuery->bindValue(':categoryDescription', $_SESSION['categoryDescription']);
+            
+            $sqlQuery->bindValue(':categoryTitle', $name);
+            $sqlQuery->bindValue(':categoryDescription', $description);
             $sqlQuery->execute();
             
             $sqlQuery->closeCursor();
