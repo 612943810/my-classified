@@ -14,22 +14,34 @@ $categoryData=new categoryController();
        <link rel='stylesheet' href='/css/bootstrap.css'>
    </head>
    <body>
-<form class="form-group" action=""name="categoryForm" method="post">
-<div class="form-group">
-<h1 class="lead">Add a new category</h1>
-<div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+ <form action="viewCategory.php"name="categoryForm" method="post" class="justify-content-end">
+<div class="mb-3 ">
+<h1  class="form-label">Add a new category</h1>
+<div class="mb-3">
     <label for="textInput">Title</label>
-<input type="text" name="textInput" id="textInput">
+    <br>
+<input type="text" class="form-control" name="textInput" id="textInput">
 </div>
-<div>
+<br>
+<div class="mb-3">
 <label for="descriptionInput">Description</label>
 <textarea class="form-control" name="descriptionInput" id="descriptionInput"></textarea>
 </div>
 <div>
 <div>
+    <br>
+    <br>
+    <br>
 <button type="submit"class="btn btn-warning" name="submitLink" > Save Changes</button>
 <button type="submit" class="btn btn-warning" name="cancelLink"> Cancel</button>
 </div>
 </form>   
+            </div>
+        
+        </div>
+</div>   
 </body>
 </html>

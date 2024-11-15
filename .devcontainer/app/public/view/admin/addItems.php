@@ -1,7 +1,7 @@
 <?
 //This script displays the add item for admin.
 require_once(__DIR__. '/../../controller/itemController.php');
-require_once(__DIR__ . '/../../controller/categoryController.php');
+require_once(__DIR__ . '/../../controller/CategoryController.php');
 require_once(__DIR__.'/../../view/navigation.php');
 $itemyData=new ItemController();
 $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionInput','priceEntry','imageValue');
@@ -15,7 +15,7 @@ $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionI
        <link rel='stylesheet' href='/css/bootstrap.css'>
    </head>
    <body>
-<form class="form-group" action=""name="categoryForm" method="post" enctype="multipart/form-data">
+<form class="form-group" action="viewCategory.php"name="categoryForm" method="post" enctype="multipart/form-data">
 <div class="form-group">
 <h1 class="lead">Add new Item</h1>
 <div>
@@ -32,7 +32,7 @@ $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionI
 <label for="dropDownList">Category</label>
 
 <?php
-$displayCategories=new categoryDatabase();
+$displayCategories= new Category();
 $displayCategories->displayCategoryResults();  
 
 ?>    

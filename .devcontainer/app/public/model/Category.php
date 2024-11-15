@@ -2,7 +2,7 @@
 require_once(__DIR__. '/../model/databaseConfig.php');
 
 
-class categoryDatabase extends DatabaseConnect{
+class Category extends DatabaseConnect{
  
   private $totalQuery;
 

@@ -1,7 +1,7 @@
 <?php
 //This is the viewq tems for admin.
 
- include_once(__DIR__.'/../controller/categoryController.php');
+ include_once(__DIR__.'/../controller/CategoryController.php');
 require_once(__DIR__. '/../view/navigation.php');
 ?>
 <html lang='en'>
@@ -18,7 +18,7 @@ require_once(__DIR__. '/../view/navigation.php');
 <h3>Categories</h3>
  <div class="nav flex-column px-4 ">
 <?php
-$displayCategoriesTwo=new categoryDatabase();
+$displayCategoriesTwo=new Category();
 $displayCategoriesTwo->displayCategoryResults();  
 ?>  
 </div>

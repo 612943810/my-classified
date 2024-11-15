@@ -1,8 +1,8 @@
 <?php
 //This page views categories for admin.
-include_once(__DIR__. '/../controller/categoryController.php');
-require_once(__DIR__. '/../view/navigation.php'); 
-include_once(__DIR__.'/../model/categoryDatabase.php');
+include_once(__DIR__. '/../../controller/categoryController.php');
+require_once(__DIR__. '/../../view/navigation.php'); 
+include_once(__DIR__.'/../../model/Category.php');
 ?>
  <html lang='en'>
 <head>
@@ -10,7 +10,7 @@ include_once(__DIR__.'/../model/categoryDatabase.php');
        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
        <meta http-equiv='X-UA-Compatible' content='ie=edge'>
        <title>My Classified</title>
-       <link rel='stylesheet' href='./../css/bootstrap.css'>
+       <link rel='stylesheet' href='/../css/bootstrap.css'>
    </head>
  
    <body>
@@ -32,7 +32,7 @@ include_once(__DIR__.'/../model/categoryDatabase.php');
     
           <?php
 
-$displayCategories=new categoryDatabase();
+$displayCategories=new Category();
 $displayCategories->displayCategoryResults();  
  ?> 
         

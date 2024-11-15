@@ -1,7 +1,6 @@
 <?php  
-session_start();
-require_once(__DIR__.'/../model/categoryDatabase.php');
-class CategoryController extends categoryDatabase
+require_once(__DIR__.'/../model/Category.php');
+class CategoryController extends Category
 {
     private $categoryTitle;
     private $categoryDescription;
@@ -13,7 +12,7 @@ class CategoryController extends categoryDatabase
             $_SESSION['categoryTitle'] = $_POST[$title];
             $_SESSION['categoryDescription'] = $_POST[$descriptionItem];
             print('<p class="alert alert-success" role="alert">Sucesss<p>');
-            $categoryOperations=new CategoryDatabase();
+            $categoryOperations=new Category();
             $categoryOperations->addCategories($title,$descriptionItem);
         }
     }
@@ -25,7 +24,7 @@ class CategoryController extends categoryDatabase
             $_SESSION['categoryTitle'] = $_POST[$title];
             $_SESSION['categoryDescription'] = $_POST[$descriptionItem];
             header('Location: https://' . $_SERVER['SERVER_NAME'] . '/comp1230/assignments/assignment2/view/viewCategory.php');
-            $categoryOperations=new CategoryDatabase();
+            $categoryOperations=new Category();
             $categoryOperations->modifyCategories($modifyButton, $title, $descriptionItem);
         }else if(isset($_POST[$cancelButton])){
             
