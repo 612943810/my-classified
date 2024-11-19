@@ -5,16 +5,16 @@ class CategoryController extends Category
     private $categoryTitle;
     private $categoryDescription;
 //This function adds a category.
-    public function addCategoriesOutput($submitButton,$cancelButton, $title, $descriptionItem)
+    public function addCategories($title, $descriptionItem)
     {
       
-        if (isset($_POST[$submitButton])) {
+
             $_SESSION['categoryTitle'] = $_POST[$title];
             $_SESSION['categoryDescription'] = $_POST[$descriptionItem];
             print('<p class="alert alert-success" role="alert">Sucesss<p>');
             $categoryOperations=new Category();
             $categoryOperations->addCategories($title,$descriptionItem);
-        }
+        
     }
     //This function modifies a category.
     public function modifyCategoriesOutput($modifyButton,$cancelButton, $title, $descriptionItem)
