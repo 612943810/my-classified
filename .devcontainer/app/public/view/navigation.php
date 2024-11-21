@@ -2,9 +2,8 @@
 //This page is a navigation templete  the website.
 
  ?>
-       
 
-    <nav class='navbar navbar-expand-lg navbar-light bg-success'>
+    <nav class='navbar navbar-expand-lg navbar-light bg-primary'>
    
            <!-- <a class='navbar-brand text-warning' href='#'>My Classified(Dashboard)</a>     -->
            <div class='navbar-expand' id='mainNavigation'>

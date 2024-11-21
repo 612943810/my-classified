@@ -12,6 +12,7 @@ include(__DIR__.'/navigation.php');
        <meta http-equiv='X-UA-Compatible' content='ie=edge'>
        <title>My Classified</title>
        <link rel='stylesheet' href='/css/bootstrap.css'>
+       <link rel='stylesheet' href='/css/style.css'>
    </head>
  
    <body>

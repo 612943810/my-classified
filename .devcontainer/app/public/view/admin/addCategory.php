@@ -3,7 +3,6 @@
 require_once(__DIR__. '/../../controller/categoryController.php');
 require_once(__DIR__. '/../navigation.php');
 $categoryData=new categoryController();
- $categoryData ->addCategoriesOutput('submitLink','cancelLink','textInput','descriptionInput');
 ?>
  <html lang='en'>
 <head>
@@ -12,7 +11,9 @@ $categoryData=new categoryController();
        <meta http-equiv='X-UA-Compatible' content='ie=edge'>
        <title>My Classified</title>
        <link rel='stylesheet' href='/css/bootstrap.css'>
+       <link rel='stylesheet' href='/css/style.css'>
    </head>
+ 
    <body>
     <div class="container">
         <div class="row justify-content-center">

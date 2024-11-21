@@ -13,7 +13,9 @@ $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionI
        <meta http-equiv='X-UA-Compatible' content='ie=edge'>
        <title>My Classified</title>
        <link rel='stylesheet' href='/css/bootstrap.css'>
+       <link rel='stylesheet' href='/css/style.css'>
    </head>
+ 
    <body>
 <form class="form-group" action="viewCategory.php"name="categoryForm" method="post" enctype="multipart/form-data">
 <div class="form-group">
