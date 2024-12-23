@@ -1,9 +1,8 @@
 <?php
 //This is the admin home page.
-session_start();
-require_once('navigation.php');
+require_once(__DIR__.'/../../view/navigation.php');
 
-require_once('../controller/User.php');
+require_once(__DIR__.'/../../controller/UserController.php');
 ?>
  <html lang='en'>
 <head>

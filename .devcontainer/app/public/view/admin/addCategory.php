@@ -1,8 +1,7 @@
 <?php
 //This script displays the add category for admin.
-require_once(__DIR__. '/../../controller/categoryController.php');
 require_once(__DIR__. '/../navigation.php');
-$categoryData=new categoryController();
+
 ?>
  <html lang='en'>
 <head>
@@ -18,7 +17,7 @@ $categoryData=new categoryController();
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
- <form action="viewCategory.php"name="categoryForm" method="post" class="justify-content-end">
+ <form action="/categories/add"name="categoryForm" method="post" class="justify-content-end">
 <div class="mb-3 ">
 <h1  class="form-label">Add a new category</h1>
 <div class="mb-3">

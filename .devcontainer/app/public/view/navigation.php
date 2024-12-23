@@ -18,7 +18,7 @@
 
    
                    <li class='nav-item dropdown col-4 '>
-                       <a class='nav-link dropdown-toggle text-warning' href='/../view/admin/viewCategory.php' id='dropdownMenu'>Categories</a>
+                       <a class='nav-link dropdown-toggle text-warning' href='/categories' id='dropdownMenu'>Categories</a>
                    </li>
                    <li class='nav-item dropdown col-6 '>
                        <a class='nav-link text-warning' href='searchFormAdmin.php' id=''>Search</a>

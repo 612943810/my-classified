@@ -6,18 +6,28 @@ class Category extends DatabaseConnect{
  
   private $totalQuery;
 
-    public function addCategories($name,$description)
-    {
-         //This function runs the add  queries.
-            $sqlStatments = "INSERT INTO `my-classified-category`(`id`, `name`, `description`) VALUES (NULL,:categoryName,:categoryDescription)";
-            $sqlQuery = $this->prepare($sqlStatments);
-            
-            $sqlQuery->bindValue(':categoryTitle', $name);
-            $sqlQuery->bindValue(':categoryDescription', $description);
-            $sqlQuery->execute();
-            
-            $sqlQuery->closeCursor();
-        } 
+  public function addCategories($name, $description) {
+    try {
+      // This function runs the add queries.
+      $sqlStatments = "INSERT INTO `my-classified-category`(`name`, `description`) VALUES ( :categoryName, :categoryDescription)";
+      $sqlQuery = $this->prepare($sqlStatments);
+      
+      $sqlQuery->bindValue(':categoryName', $name);
+      $sqlQuery->bindValue(':categoryDescription', $description);
+      
+      if ($sqlQuery->execute()) {
+        echo "Category added successfully.";
+      } else {
+        $errorInfo = $sqlQuery->errorInfo();
+        echo "Failed to add category. Error: " . $errorInfo[2];
+      }
+      
+      $sqlQuery->closeCursor();
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
         //This function runs the modify queries.
         public function modifyCategories($submitModify,$title,$description){ 
           if(isset($_POST[$title])&&isset($_POST[$description])){
@@ -44,10 +54,7 @@ class Category extends DatabaseConnect{
        $sqlQuery = $this->prepare($sqlStatments);
        $sqlQuery->execute();
        $totalQuery=$sqlQuery->fetch();
-         
-       $totalCount=0;
-                  
-       while ($totalQuery!=null) {
+          while ($totalQuery!=null) {
           // $totalCount++;
           // if ($_SERVER['REQUEST_URI']=="/comp1230/assignments/assignment2/view/viewCategory.php") {
                echo"<tr>";
@@ -56,39 +63,10 @@ class Category extends DatabaseConnect{
                print('<td>To be contunie</td>');
                print('<td><button class="btn btn-warning"><a href=modifyCategories.php?id='.$totalQuery["id"].'>Modify</a></button></td>');
                $totalQuery=$sqlQuery->fetch();  
-                $sqlQuery->closeCursor();
-          }
-        //        echo "</tr>";
-        // //   } else  if ($_SERVER['REQUEST_URI']=="/comp1230/assignments/assignment2/view/viewCategoryVisitor.php") {
-        //     echo"<tr>";
-        //     print('<td>'.$totalQuery['name']."</td>");
-        //     print('<td>'.$totalQuery['description']."</td>");
-        //     $totalQuery=$sqlQuery->fetch();
-        //     echo "</tr>";
-        // }else if ($_SERVER['REQUEST_URI']=="/comp1230/assignments/assignment2/view/viewItems.php") {
-        //        while ($totalQuery!=null) {
-        //            print("<a class='border' href='itemListVisitor.php?id={$totalQuery['id']}'>{$totalQuery['name']}</a>");
-        //            $totalQuery=$sqlQuery->fetch();
-        //        }
-        //    }else if ($_SERVER['REQUEST_URI']=="/comp1230/assignments/assignment2/view/viewItemsAdmin.php") {
-        //     while ($totalQuery!=null) {
-        //         print("<a class='border' href='itemListAdmin.php?id={$totalQuery['id']}'>{$totalQuery['name']}</a>");
-        //         $totalQuery=$sqlQuery->fetch();
-        //     }
-        // }
-        //     else if ($_SERVER['REQUEST_URI']=="/comp1230/assignments/assignment2/view/addItems.php") {
-        //        {
-        //          while($totalQuery!=null){  
-        //                print("<option value='{$totalQuery['name']}'>{$totalQuery['name']}</option>");
-        //                     $totalQuery=$sqlQuery->fetch();
               
-        //                }
-                
-                     }
-               
-          //}
-   //    }
-  // }
+          } 
+           $sqlQuery->closeCursor();
+    }
                         
               
   /**

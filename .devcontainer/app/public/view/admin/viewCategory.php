@@ -1,6 +1,5 @@
 <?php
 //This page views categories for admin.
-include_once(__DIR__. '/../../controller/categoryController.php');
 require_once(__DIR__. '/../../view/navigation.php'); 
 include_once(__DIR__.'/../../model/Category.php');
 ?>
@@ -16,7 +15,7 @@ include_once(__DIR__.'/../../model/Category.php');
    <body>
 <h1>Categories</h1>
 
-<button type="button" class="btn btn-warning float-md-right btn-toolbar"><a href="/view/admin/addCategory.php">Add New Category</a></button>
+<button type="button" class="btn btn-warning float-md-right btn-toolbar"><a href="/categories/add">Add New Category</a></button>
 
 
 </ul>

@@ -1,5 +1,5 @@
 <?php
-require_once('../model/databaseConfig.php');
+require_once(__DIR__.'/../model/databaseConfig.php');
 class User extends DatabaseConnect
 {
    //This function logs in a user.
