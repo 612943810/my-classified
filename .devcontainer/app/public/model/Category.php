@@ -1,34 +1,18 @@
 <?php
 require_once(__DIR__. '/../model/databaseConfig.php');
-
-
 class Category extends DatabaseConnect{
- 
-  private $totalQuery;
-
+ private $totalQuery;
   public function addCategories($name, $description) {
-    try {
       // This function runs the add queries.
       $sqlStatments = "INSERT INTO `my-classified-category`(`name`, `description`) VALUES ( :categoryName, :categoryDescription)";
       $sqlQuery = $this->prepare($sqlStatments);
-      
       $sqlQuery->bindValue(':categoryName', $name);
       $sqlQuery->bindValue(':categoryDescription', $description);
-      
-      if ($sqlQuery->execute()) {
-        echo "Category added successfully.";
-      } else {
-        $errorInfo = $sqlQuery->errorInfo();
-        echo "Failed to add category. Error: " . $errorInfo[2];
-      }
-      
+      $sqlQuery->execute();
       $sqlQuery->closeCursor();
-    } catch (PDOException $e) {
-      echo "Error: " . $e->getMessage();
-    }
-  }
 
-        //This function runs the modify queries.
+  }
+  //This function runs the modify queries.
         public function modifyCategories($submitModify,$title,$description){ 
           if(isset($_POST[$title])&&isset($_POST[$description])){
             $sqlStatments ="SELECT * FROM `my-classified-category`";
@@ -63,7 +47,6 @@ class Category extends DatabaseConnect{
                print('<td>To be contunie</td>');
                print('<td><button class="btn btn-warning"><a href=modifyCategories.php?id='.$totalQuery["id"].'>Modify</a></button></td>');
                $totalQuery=$sqlQuery->fetch();  
-              
           } 
            $sqlQuery->closeCursor();
     }

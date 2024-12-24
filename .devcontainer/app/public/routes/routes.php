@@ -12,14 +12,15 @@ switch($mainPath){
           require __DIR__.'/../view/admin/viewCategory.php';
           break;
      case "/categories/add":
-         require(__DIR__. '/../view/admin/addCategory.php'); 
-         $categoryData=new categoryController();
+        $categoryData=new categoryController();
           if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                $name = filter_input(INPUT_POST, 'textInput');
                $description = filter_input(INPUT_POST, 'descriptionInput');
                $categoryData->addCategories($name, $description);
                header('Location:/categories');
-}
+               exit();
+          } 
+          require(__DIR__. '/../view/admin/addCategory.php');
           break;
   case '/admin':
      require __DIR__. '/../view/admin/adminArea.php';
@@ -27,5 +28,5 @@ switch($mainPath){
     default:
          require __DIR__ .  '/../view/error.php';
          break;
-        }
-        ?>
+}
+?>
