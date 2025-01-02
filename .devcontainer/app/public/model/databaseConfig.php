@@ -1,12 +1,13 @@
 <?php
 class DatabaseConnect extends PDO{
-    private $databaseUserName,$databaseUserPassword;
+  protected $databaseUserName,$databaseUserPassword;
 
     //This function does database configuration 
     public function __construct($pdoDSN='mysql:host=db;dbname=my-classified;',$databaseUserName = "root",$databaseUserPassword = "mysqlcee")
 { 
     parent::__construct($pdoDSN,$databaseUserName,$databaseUserPassword);  
-    $this->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $this->databaseUserName = $databaseUserName;
+    $this->databaseUserPassword = $databaseUserPassword;
 }
 
     public function getDatabaseUserName()

@@ -34,9 +34,9 @@ $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionI
 <label for="dropDownList">Category</label>
 
 <?php
-$displayCategories= new Category();
+$pdo = new PDO('mysql:host=db;dbname=my-classified', 'root', 'mysqlcee');
+$displayCategories = new Category($pdo);
 $displayCategories->displayCategoryResults();  
-
 ?>    
    
 </select>

@@ -45,7 +45,7 @@ class Category extends DatabaseConnect{
                print('<td>'.$totalQuery['name']."</td>");
                print('<td>'.$totalQuery['description']."</td>");
                print('<td>To be contunie</td>');
-               print('<td><button class="btn btn-warning"><a href=modifyCategories.php?id='.$totalQuery["id"].'>Modify</a></button></td>');
+               print('<td><button class="btn btn-warning"><a href=categories/modify?id='.$totalQuery["id"].'>Modify</a></button></td>');
                $totalQuery=$sqlQuery->fetch();  
           } 
            $sqlQuery->closeCursor();

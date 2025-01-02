@@ -22,6 +22,9 @@ switch($mainPath){
           } 
           require(__DIR__. '/../view/admin/addCategory.php');
           break;
+     case "/categories/modify":
+          require __DIR__.'/../view/admin/modifyCategories.php';
+          break;         
   case '/admin':
      require __DIR__. '/../view/admin/adminArea.php';
      break;
