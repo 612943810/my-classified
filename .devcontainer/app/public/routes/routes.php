@@ -2,6 +2,7 @@
 include_once(__DIR__.'/../controller/HomeController.php');
 include_once(__DIR__.'/../controller/CategoryController.php');
 $mainPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); 
+$totalQuery = new PDO('mysql:host=db;dbname=my-classified', 'root', 'mysqlcee');
 switch($mainPath){
     case ' ':
     case '/':
@@ -12,7 +13,7 @@ switch($mainPath){
           require __DIR__.'/../view/admin/viewCategory.php';
           break;
      case "/categories/add":
-        $categoryData=new categoryController();
+        $categoryData=new CategoryController();
           if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                $name = filter_input(INPUT_POST, 'textInput');
                $description = filter_input(INPUT_POST, 'descriptionInput');
@@ -23,6 +24,19 @@ switch($mainPath){
           require(__DIR__. '/../view/admin/addCategory.php');
           break;
      case "/categories/modify":
+          if (isset($_GET['id'])) {
+               $id = $_GET['id'];
+               $categoryDisplay = new CategoryController();
+               $categoryData = $categoryDisplay->getCategoriesById($id); 
+               $title = $categoryData['name'];
+               $description = $categoryData['description'];
+             } 
+          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+               $categoryData=new CategoryController();
+               $categoryData->modifyCategories($id, $_POST['modifyText'], $_POST['modifyDescription']);
+               header('Location:/categories');
+               exit();
+          }
           require __DIR__.'/../view/admin/modifyCategories.php';
           break;         
   case '/admin':

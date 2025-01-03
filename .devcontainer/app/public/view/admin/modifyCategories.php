@@ -1,11 +1,10 @@
 <?php
 //This page modifies the categories for admin.
 require_once(__DIR__ .'/../../controller/CategoryController.php');
-require_once(__DIR__ .'/../../view/navigation.php');
-$categoryDisplay=new categoryController();
-$categoryDisplay->modifyCategoriesOutput('submitModify','cancelModify','modifyText','modifyDescription');
-require_once('./navigation.php');
+require_once(__DIR__ .'./../navigation.php');
+
 ?> 
+<html lang='en'>
 <head>
        <meta charset='UTF-8'>
        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -16,13 +15,15 @@ require_once('./navigation.php');
    </head>
    <body>
  <h1 class="form-check-inline">Modify category</h1>
-<form class="form-group" action="" method="post"> 
+<form class="form-group" action="/categories/modify" method="post"> 
+<input type="hidden" name="id" value="<?php echo $categoryData['id']; ?>">
 <label for="titleModify">Title</label>
-<input type="text" class="form-control" id="titleModify"name="modifyText">
+<div>
+<input type="text" class="form-control" id="titleModify" name="modifyText" value="<?php echo $categoryData['name']; ?>">
 <br>
 <br>
 <label for="descriptionModify">Description</label>
-<textarea class="form-control" id="descriptionModify"  name="modifyDescription"></textarea>
+<textarea class="form-control" id="descriptionModify" name="modifyDescription"><?php echo $categoryData['description']; ?></textarea>
 <label for="imageEntry">Images</label>
 <input type="file" name="imageValue" id="imageValue">
 <br>

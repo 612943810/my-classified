@@ -13,8 +13,11 @@ public function addCategories($name, $description) {
   }
     //This function modifies a category.
     public function modifyCategoriesOutput($modifyButton,$cancelButton, $title, $descriptionItem)
-    {$this->category->modifyCategories($modifyButton,$title,$descriptionItem);
-     }
+    {
+        if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['description'])) {
+            $this->category->modifyCategories($modifyButton, $_POST['name'], $_POST['description']);
+        }
     }
+}
 
 

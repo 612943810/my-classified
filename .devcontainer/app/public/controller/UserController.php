@@ -1,7 +1,12 @@
 <?php
 require_once(__DIR__.'/../model/databaseConfig.php');
-class User extends DatabaseConnect
+
+class User 
 {
+   use PDOTrait;
+   public function __construct() {
+      $this->connectToDatabase();
+  }
    //This function logs in a user.
     private $userName;
     private $userPassword;
@@ -11,7 +16,7 @@ class User extends DatabaseConnect
         $_SESSION['adminText']="Dashboard";
         $_SESSION['logoutText']="Logout";
      $sqlStatement="SELECT * FROM `my-classified-members` WHERE id=1 ";
-        $prepareSQL=$this->prepare($sqlStatement);
+        $prepareSQL=$this->pdo->prepare($sqlStatement);
         $prepareSQL->execute();
         $sqlData=$prepareSQL->fetch();
         $prepareSQL->closeCursor();

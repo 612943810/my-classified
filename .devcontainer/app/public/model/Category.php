@@ -1,11 +1,15 @@
 <?php
 require_once(__DIR__. '/../model/databaseConfig.php');
-class Category extends DatabaseConnect{
+class Category {
+  use PDOTrait;
  private $totalQuery;
+  public function __construct() {
+      $this->connectToDatabase();
+  }
   public function addCategories($name, $description) {
       // This function runs the add queries.
-      $sqlStatments = "INSERT INTO `my-classified-category`(`name`, `description`) VALUES ( :categoryName, :categoryDescription)";
-      $sqlQuery = $this->prepare($sqlStatments);
+      $sqlStatments = "INSERT INTO `my-classified-category`(name, description) VALUES ( :categoryName, :categoryDescription)";
+      $sqlQuery = $this->pdo->prepare($sqlStatments);
       $sqlQuery->bindValue(':categoryName', $name);
       $sqlQuery->bindValue(':categoryDescription', $description);
       $sqlQuery->execute();
@@ -15,18 +19,18 @@ class Category extends DatabaseConnect{
   //This function runs the modify queries.
         public function modifyCategories($submitModify,$title,$description){ 
           if(isset($_POST[$title])&&isset($_POST[$description])){
-            $sqlStatments ="SELECT * FROM `my-classified-category`";
-            $sqlQuery = $this->prepare($sqlStatments);
+            $sqlStatments ="SELECT * FROM my-classified-category";
+            $sqlQuery = $this->pdo->prepare($sqlStatments);
             $sqlQuery->execute();
             $sqlQuery->closeCursor();
-            $_SESSION['id']=$_GET['id'];
-              $_SESSION['modifyTitle'] = $_POST[$title];
-        $_SESSION['modifyDescription'] = $_POST[$description];
-           $sqlStatments ="UPDATE `my-classified-category` SET `name`=:categoryTitle,`description`=:categoryDescription WHERE `id`=:id";
-            $sqlQuery = $this->prepare($sqlStatments);
-            $sqlQuery->bindValue(':id', $_SESSION['id']);
-            $sqlQuery->bindValue(':categoryTitle', $_SESSION['modifyTitle']);
-            $sqlQuery->bindValue(':categoryDescription', $_SESSION['modifyDescription']);
+            $mainId=$_GET['id'];
+              $title = $_POST[$title];
+        $description = $_POST[$description];
+           $sqlStatments ="UPDATE `my-classified-category` SET name=:categoryTitle,description=:categoryDescription WHERE id=:id";
+            $sqlQuery = $this->pdo->prepare($sqlStatments);
+            $sqlQuery->bindValue(':id', $mainId);
+            $sqlQuery->bindValue(':categoryTitle', $title);
+            $sqlQuery->bindValue(':categoryDescription', $description);
             $sqlQuery->execute();
             $sqlQuery->closeCursor();
       }
@@ -35,7 +39,7 @@ class Category extends DatabaseConnect{
    public function displayCategoryResults()
    {
        $sqlStatments = "SELECT * FROM `my-classified-category`";
-       $sqlQuery = $this->prepare($sqlStatments);
+       $sqlQuery = $this->pdo->prepare($sqlStatments);
        $sqlQuery->execute();
        $totalQuery=$sqlQuery->fetch();
           while ($totalQuery!=null) {
@@ -50,6 +54,17 @@ class Category extends DatabaseConnect{
           } 
            $sqlQuery->closeCursor();
     }
+
+  // This function retrieves a category by its ID.
+  public function getCategoriesById($id) {
+      $sqlStatments = "SELECT * FROM `my-classified-category` WHERE id = :id";
+      $sqlQuery = $this->pdo->prepare($sqlStatments);
+      $sqlQuery->bindValue(':id', $id);
+      $sqlQuery->execute();
+      $category = $sqlQuery->fetch();
+      $sqlQuery->closeCursor();
+      return $category;
+  }
                         
               
   /**
