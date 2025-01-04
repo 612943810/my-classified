@@ -15,8 +15,8 @@ switch($mainPath){
      case "/categories/add":
         $categoryData=new CategoryController();
           if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-               $name = filter_input(INPUT_POST, 'textInput');
-               $description = filter_input(INPUT_POST, 'descriptionInput');
+               $name = filter_input(INPUT_POST, 'titleModify');
+               $description = filter_input(INPUT_POST, 'descriptionModify');
                $categoryData->addCategories($name, $description);
                header('Location:/categories');
                exit();
@@ -24,18 +24,15 @@ switch($mainPath){
           require(__DIR__. '/../view/admin/addCategory.php');
           break;
      case "/categories/modify":
+          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           if (isset($_GET['id'])) {
                $id = $_GET['id'];
                $categoryDisplay = new CategoryController();
-               $categoryData = $categoryDisplay->getCategoriesById($id); 
-               $title = $categoryData['name'];
-               $description = $categoryData['description'];
+               $name = filter_input(INPUT_POST, 'textInput');
+               $description = filter_input(INPUT_POST, 'descriptionInput'); 
+               $categoryData = $categoryDisplay->modifyCategoriesOutput($name, $description); 
+               //
              } 
-          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-               $categoryData=new CategoryController();
-               $categoryData->modifyCategories($id, $_POST['modifyText'], $_POST['modifyDescription']);
-               header('Location:/categories');
-               exit();
           }
           require __DIR__.'/../view/admin/modifyCategories.php';
           break;         

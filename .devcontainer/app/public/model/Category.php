@@ -17,12 +17,9 @@ class Category {
 
   }
   //This function runs the modify queries.
-        public function modifyCategories($submitModify,$title,$description){ 
+        public function modifyCategories($title,$description){ 
           if(isset($_POST[$title])&&isset($_POST[$description])){
-            $sqlStatments ="SELECT * FROM my-classified-category";
-            $sqlQuery = $this->pdo->prepare($sqlStatments);
-            $sqlQuery->execute();
-            $sqlQuery->closeCursor();
+     
             $mainId=$_GET['id'];
               $title = $_POST[$title];
         $description = $_POST[$description];
@@ -61,7 +58,7 @@ class Category {
       $sqlQuery = $this->pdo->prepare($sqlStatments);
       $sqlQuery->bindValue(':id', $id);
       $sqlQuery->execute();
-      $category = $sqlQuery->fetch();
+      $category = $sqlQuery->fetch(PDO::FETCH_ASSOC);
       $sqlQuery->closeCursor();
       return $category;
   }

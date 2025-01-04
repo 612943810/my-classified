@@ -1,8 +1,19 @@
 <?php
 //This page modifies the categories for admin.
 require_once(__DIR__ .'/../../controller/CategoryController.php');
+require_once(__DIR__ .'/../../model/Category.php');
 require_once(__DIR__ .'./../navigation.php');
+$categoryController = new CategoryController();
 
+// Ensure the ID is provided
+if (isset($_GET['id'])) {
+    $categoryId = $_GET['id'];
+    $category=new Category();
+    $categoryData=$category->getCategoriesById($categoryId);
+} else {
+    echo "Error: No category ID provided.";
+    exit;
+}
 ?> 
 <html lang='en'>
 <head>
@@ -15,7 +26,7 @@ require_once(__DIR__ .'./../navigation.php');
    </head>
    <body>
  <h1 class="form-check-inline">Modify category</h1>
-<form class="form-group" action="/categories/modify" method="post"> 
+<form class="form-group" action="/categories/modify?id=<?php echo $categoryData['id'] ?>" method="post"> 
 <input type="hidden" name="id" value="<?php echo $categoryData['id']; ?>">
 <label for="titleModify">Title</label>
 <div>
@@ -23,7 +34,7 @@ require_once(__DIR__ .'./../navigation.php');
 <br>
 <br>
 <label for="descriptionModify">Description</label>
-<textarea class="form-control" id="descriptionModify" name="modifyDescription"><?php echo $categoryData['description']; ?></textarea>
+<textarea class="form-control" id="descriptionModify" name="modifyDescription" ><?php echo $categoryData['description']; ?></textarea>
 <label for="imageEntry">Images</label>
 <input type="file" name="imageValue" id="imageValue">
 <br>
