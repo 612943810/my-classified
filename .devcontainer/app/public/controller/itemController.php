@@ -1,8 +1,11 @@
 <?php  
 require_once(__DIR__. '/./../model/itemDatabase.php');
 
-class ItemController extends DatabaseConnect
-{
+class ItemController{
+    use PDOTrait;
+public function __construct() {
+   $this->connectToDatabase();
+}
     private $categoryTitle;
     private $categoryDescription;
 
@@ -17,7 +20,7 @@ class ItemController extends DatabaseConnect
             $_SESSION['priceInput'] = $_POST[$priceEntry];
 
             $categorySQLStatments = "SELECT `id` FROM my-classified-category WHERE `name`=:categoryID";
-            $sqlQuery = $this->prepare($categorySQLStatments);
+            $sqlQuery = $this->pdo->prepare($categorySQLStatments);
             $sqlQuery->bindValue(':categoryID', $_POST[$categoryDropdown]);
             $sqlQuery->execute();
             $categoryTotalQuery = $sqlQuery->fetch();

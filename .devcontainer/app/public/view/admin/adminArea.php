@@ -1,7 +1,5 @@
 <?php
-//This is the admin home page.
 require_once(__DIR__.'/../../view/navigation.php');
-
 require_once(__DIR__.'/../../controller/UserController.php');
 ?>
  <html lang='en'>
@@ -13,9 +11,7 @@ require_once(__DIR__.'/../../controller/UserController.php');
        <link rel='stylesheet' href='/css/bootstrap.css'>
        <link rel='stylesheet' href='/css/style.css'>
    </head>
- 
-   <body>
-
+    <body>
 <h1>Welcome to the Dashboard,<?php echo $_SESSION['userName']?></h1>
 <li>items</li>
 </body>
