@@ -1,8 +1,8 @@
 <?php
-//This is the viewq tems for admin.
-
- include_once(__DIR__.'/../controller/CategoryController.php');
+session_start();
+include_once(__DIR__.'/../controller/CategoryController.php');
 require_once(__DIR__. '/../view/navigation.php');
+$_SESSION['loggedIn']=true;
 ?>
 <html lang='en'>
 <head>

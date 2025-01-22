@@ -1,7 +1,3 @@
-<?php
-session_start();
-$_SESSION['loggedIn'] = false;
-?>
 <nav class='navbar navbar-expand-lg navbar-light bg-primary'>
     <div class='container-fluid'>
         <a class='navbar-brand text-warning' href="/">My Classified Ads</a>
@@ -22,9 +18,9 @@ $_SESSION['loggedIn'] = false;
                 <?php
                 if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
                 ?>
-                    <li class='nav-item'>
-                        <a class='nav-link text-warning' href="./view/login.php">Login</a>
-                    </li>
+                   <form action="/login" method="post" class="d-inline">
+                            <button class='btn btn-success'>Log In</button>
+                        </form>
                 <?php
                 } else {
                 ?>      
@@ -36,7 +32,7 @@ $_SESSION['loggedIn'] = false;
                 </li>
               
                     <li class='nav-item'>
-                        <form action="./logout.php" method="post" class="d-inline">
+                        <form action="/logout" method="post" class="d-inline">
                             <button class='btn btn-success'>Log Out</button>
                         </form>
                     </li>

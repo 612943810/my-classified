@@ -2,14 +2,18 @@
 require_once(__DIR__. '/../model/databaseConfig.php');
 
 
-class itemsDatabase extends DatabaseConnect
+class itemsDatabase 
 {
     private $totalQuery;
+    use PDOTrait;
+    public function __construct() {
+      $this->connectToDatabase();
+  }
 //This function adds the items.
     public function addItems($categoryID){
 
         $itemSQLStatments = "INSERT INTO `assignment2_items`(`id`, `title`, `description`, `image`,`price`, `cat_id`) VALUES (NULL,:categoryTitle,:categoryDescription,:imageUpload,:itemPrice,:categoryID)";
-        $sqlQuery = $this->prepare($itemSQLStatments);
+        $sqlQuery = $this->pdo->prepare($itemSQLStatments);
         $sqlQuery->bindValue(':categoryTitle', $_SESSION['itemTitle']);
         $sqlQuery->bindValue(':categoryDescription',$_SESSION['itemDescription']);   
          $sqlQuery->bindValue(':imageUpload',$_SESSION['imageEntry']);        
@@ -24,7 +28,7 @@ class itemsDatabase extends DatabaseConnect
         public function modifyItems($submitModify,$title,$description,$imageInput,$priceItem){ 
           // if(isset($_POST[$title])&&isset($_POST[$description])){
             $sqlStatments ="SELECT * FROM `assignment2_items`";
-            $sqlQuery = $this->prepare($sqlStatments);
+            $sqlQuery = $this->pdo->prepare($sqlStatments);
             $sqlQuery->execute();
             $totalQuery=$sqlQuery->fetch();
             $sqlQuery->closeCursor();
@@ -37,7 +41,7 @@ class itemsDatabase extends DatabaseConnect
         // $_SESSION['itemsDescription'] = $_POST[$description];
         // $_SESSION['priceInput'] = $_POST[$description];//  
            $sqlStatments ="UPDATE `assignment2_items` SET `id`=Null,`title`=:itemTitle,`description`=:categoryDescription,`image`=:imageUpload,`price`=:itemPrice,`cat_id`=NULL,`status`=NULL,`front_page`=NULL WHERE`id`= 1";
-          $sqlQuery = $this->prepare($sqlStatments);
+          $sqlQuery = $this->pdo->prepare($sqlStatments);
             $sqlQuery->bindValue(':id', $_SESSION['idModify']);
             $sqlQuery->bindValue(':itemTitle', $_SESSION['modifyTitle']);
             $sqlQuery->bindValue(':categoryDescription',$_SESSION['itemDescriptionModify']);   
@@ -57,7 +61,7 @@ class itemsDatabase extends DatabaseConnect
    {
 
        $sqlStatments = "SELECT * FROM assignment2_items";
-       $sqlQuery = $this->prepare($sqlStatments);
+       $sqlQuery = $this->pdo->prepare($sqlStatments);
       //  $sqlQuery->bindValue(':idNumber',$_GET['id']);
        $sqlQuery->execute();
        $totalQuery=$sqlQuery->fetch();

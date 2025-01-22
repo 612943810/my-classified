@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__.'/../controller/HomeController.php');
 include_once(__DIR__.'/../controller/CategoryController.php');
+include_once(__DIR__.'/../controller/UserController.php');
 $mainPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); 
 $totalQuery = new PDO('mysql:host=db;dbname=my-classified', 'root', 'mysqlcee');
 switch($mainPath){
@@ -44,6 +45,16 @@ case "/search":
   case '/admin':
      require __DIR__. '/../view/admin/adminArea.php';
      break;
+     case '/login':
+          session_start();
+          $loginUser=new User();
+          $loginUser->userLogin('userNameEntry','userPasswordEntry');
+          $_SESSION['loggedIn']=true;
+          break;
+     case '/logout':
+          $logoutUser=new User();
+          $logoutUser->logoutSession();
+          break;
     default:
          require __DIR__ .  '/../view/error.php';
          break;

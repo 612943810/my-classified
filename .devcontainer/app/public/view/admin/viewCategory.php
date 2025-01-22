@@ -1,7 +1,9 @@
 <?php
-//This page views categories for admin.
+session_start();
 require_once(__DIR__. '/../../view/navigation.php'); 
 include_once(__DIR__.'/../../model/Category.php');
+$_SESSION['loggedIn']=true;
+
 ?>
 <html lang='en'>
 <head>
