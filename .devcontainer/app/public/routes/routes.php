@@ -39,7 +39,8 @@ switch($mainPath){
      case "/categories/delete":
           break;
 case "/search":
-     require __DIR__.'/../view/searchForm.php';      
+     require __DIR__.'/../view/searchForm.php'; 
+     break;     
   case '/admin':
      require __DIR__. '/../view/admin/adminArea.php';
      break;
