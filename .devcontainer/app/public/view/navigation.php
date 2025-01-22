@@ -13,9 +13,12 @@ $_SESSION['loggedIn'] = false;
                 <li class='nav-item active'>
                     <a class='nav-link text-warning active' href="/">Home</a>
                 </li>
-         
+       
             </ul>
-            <ul class='navbar-nav ms-auto'>
+            <ul class='navbar-nav ms-auto'>    
+                <li class='nav-item'>
+                   <a class='nav-link text-warning' href='/search'>Search</a> 
+                </li>
                 <?php
                 if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
                 ?>
@@ -31,9 +34,7 @@ $_SESSION['loggedIn'] = false;
                 <li class='nav-item dropdown'>
                     <a class='nav-link dropdown-toggle text-warning' href='/categories' id='dropdownMenu'>Categories</a>
                 </li>
-                <li class='nav-item'>
-                    <a class='nav-link text-warning' href='searchFormAdmin.php'>Search</a>
-                </li>
+              
                     <li class='nav-item'>
                         <form action="./logout.php" method="post" class="d-inline">
                             <button class='btn btn-success'>Log Out</button>
