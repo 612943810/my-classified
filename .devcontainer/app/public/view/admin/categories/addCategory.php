@@ -1,6 +1,6 @@
 <?php
-// This script displays the add category for admin.
-require_once(__DIR__. '/../navigation.php');
+session_start();    
+require_once(__DIR__. '/../../navigation.php');
 ?>
 <!DOCTYPE html>
 <html lang='en'>

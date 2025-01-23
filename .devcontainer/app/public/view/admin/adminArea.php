@@ -2,7 +2,6 @@
 session_start();
 require_once(__DIR__.'/../../view/navigation.php');
 require_once(__DIR__.'/../../controller/UserController.php');
-//$_SESSION['loggedIn']=true;
 ?>
  <html lang='en'>
 <head>

@@ -11,33 +11,41 @@ switch($mainPath){
      $homeControl->home();
          break;
      case "/categories":
-          require __DIR__.'/../view/admin/viewCategory.php';
+          require __DIR__.'/../view/admin/categories/viewCategory.php';
           break;
      case "/categories/add":
         $categoryData=new CategoryController();
           if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-               $name = filter_input(INPUT_POST, 'titleModify');
-               $description = filter_input(INPUT_POST, 'descriptionModify');
+               $name = filter_input(INPUT_POST, 'textInput');
+               $description = filter_input(INPUT_POST, 'descriptionInput');
                $categoryData->addCategories($name, $description);
                header('Location:/categories');
-               exit();
+               break;
           } 
-          require(__DIR__. '/../view/admin/addCategory.php');
+          require(__DIR__. '/../view/admin/categories/addCategory.php');
           break;
      case "/categories/modify":
           if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-          if (isset($_GET['id'])) {
-               $id = $_GET['id'];
-               $categoryDisplay = new CategoryController();
-               $name = filter_input(INPUT_POST, 'textInput');
-               $description = filter_input(INPUT_POST, 'descriptionInput'); 
-               $categoryData = $categoryDisplay->modifyCategoriesOutput($name, $description); 
-               //
-             } 
-          }
-          require __DIR__.'/../view/admin/modifyCategories.php';
-          break;   
+               $categoryData = new CategoryController();
+               $categoryData->modifyCategories();
+               header('Location: /categories');
+              break;
+           } else {
+               require __DIR__ . '/../view/admin/categories/modifyCategories.php';
+           }
+          break;
      case "/categories/delete":
+          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+               $categoryData = new CategoryController();
+               if (isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                    $categoryData->deleteCategory($id);
+                    header('Location: /categories');
+                    exit();
+               }
+          } else {
+               require __DIR__ . '/../view/admin/categories/deleteCategory.php';
+          }
           break;
 case "/search":
      require __DIR__.'/../view/searchForm.php'; 
@@ -48,8 +56,9 @@ case "/search":
      case '/login':
           session_start();
           $loginUser=new User();
-          $loginUser->userLogin('userNameEntry','userPasswordEntry');
+          $loginUser->userLogin('test', 'demo');
           $_SESSION['loggedIn']=true;
+          header('Location:/admin');
           break;
      case '/logout':
           $logoutUser=new User();

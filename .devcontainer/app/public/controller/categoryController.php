@@ -17,6 +17,8 @@ public function addCategories($name, $description) {
         if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['description'])) {
             $this->category->modifyCategories($title, $descriptionItem);
         }
+    }public function deleteCategory($id) {
+        $this->category->deleteCategory($id);
     }
 }
 

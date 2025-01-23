@@ -1,8 +1,7 @@
 <?php
 session_start();
-require_once(__DIR__. '/../../view/navigation.php'); 
-include_once(__DIR__.'/../../model/Category.php');
-$_SESSION['loggedIn']=true;
+require_once(__DIR__. '/../../../view/navigation.php'); 
+include_once(__DIR__.'/../../../model/Category.php');
 
 ?>
 <html lang='en'>
@@ -39,5 +38,6 @@ $displayCategories->displayCategoryResults();
         
 </tbody>  
 </table>
+<
 </body>
 </html>

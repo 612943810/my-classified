@@ -17,19 +17,23 @@ class Category {
 
   }
   //This function runs the modify queries.
-        public function modifyCategories($title,$description){ 
-          if(isset($_POST[$title])&&isset($_POST[$description])){
+        public function modifyCategories(){ 
+          if(isset($_POST['name'])&&isset($_POST['description'])){
      
             $mainId=$_GET['id'];
-              $title = $_POST[$title];
-        $description = $_POST[$description];
-           $sqlStatments ="UPDATE `my-classified-category` SET name=:categoryTitle,description=:categoryDescription WHERE id=:id";
+              $name = $_POST['name'];
+        $description = $_POST['description'];
+           $sqlStatments ="UPDATE `my-classified-category` 
+                         SET `name` = :name, `description` = :description WHERE `id` = :id";
             $sqlQuery = $this->pdo->prepare($sqlStatments);
             $sqlQuery->bindValue(':id', $mainId);
-            $sqlQuery->bindValue(':categoryTitle', $title);
-            $sqlQuery->bindValue(':categoryDescription', $description);
-            $sqlQuery->execute();
-            $sqlQuery->closeCursor();
+            $sqlQuery->bindValue(':name', $name);
+            $sqlQuery->bindValue(':description', $description);
+          $sqlQuery->execute();
+         $sqlQuery->closeCursor();
+      } else {
+          echo "Required fields are missing.";
+      
       }
    }
    //This function displays all the function records.
@@ -47,6 +51,7 @@ class Category {
                print('<td>'.$totalQuery['description']."</td>");
                print('<td>To be contunie</td>');
                print('<td><button class="btn btn-warning"><a href=categories/modify?id='.$totalQuery["id"].'>Modify</a></button></td>');
+               print('<td><button class="btn btn-danger"><a href=categories/delete?id='.$totalQuery["id"].'>Delete</a></button></td>');
                $totalQuery=$sqlQuery->fetch();  
           } 
            $sqlQuery->closeCursor();
@@ -62,8 +67,14 @@ class Category {
       $sqlQuery->closeCursor();
       return $category;
   }
-                        
-              
+   public function deleteCategory($id) {
+      // This function runs the delete queries.
+      $sqlStatments = "DELETE FROM `my-classified-category` WHERE id = :id";
+      $sqlQuery = $this->pdo->prepare($sqlStatments);
+      $sqlQuery->bindValue(':id', $id);
+      $sqlQuery->execute();
+      $sqlQuery->closeCursor();                     
+   }         
   /**
    * This gets the value of totalQuery
    */ 

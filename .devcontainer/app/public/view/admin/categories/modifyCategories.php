@@ -1,18 +1,15 @@
 <?php
+session_start();
 //This page modifies the categories for admin.
-require_once(__DIR__ .'/../../controller/CategoryController.php');
-require_once(__DIR__ .'/../../model/Category.php');
-require_once(__DIR__ .'./../navigation.php');
+require_once(__DIR__ .'/../../../controller/CategoryController.php');
+require_once(__DIR__ .'/../../../model/Category.php');
+require_once(__DIR__ .'./../../navigation.php');
 $categoryController = new CategoryController();
-
 // Ensure the ID is provided
 if (isset($_GET['id'])) {
     $categoryId = $_GET['id'];
     $category=new Category();
     $categoryData=$category->getCategoriesById($categoryId);
-} else {
-    echo "Error: No category ID provided.";
-    exit;
 }
 ?> 
 <html lang='en'>
@@ -30,14 +27,11 @@ if (isset($_GET['id'])) {
 <input type="hidden" name="id" value="<?php echo $categoryData['id']; ?>">
 <label for="titleModify">Title</label>
 <div>
-<input type="text" class="form-control" id="titleModify" name="modifyText" value="<?php echo $categoryData['name']; ?>">
+<input type="text" class="form-control" id="name" name="name" value="<?php echo $categoryData['name']; ?>">
 <br>
 <br>
 <label for="descriptionModify">Description</label>
-<textarea class="form-control" id="descriptionModify" name="modifyDescription" ><?php echo $categoryData['description']; ?></textarea>
-<label for="imageEntry">Images</label>
-<input type="file" name="imageValue" id="imageValue">
-<br>
+<textarea class="form-control" id="description" name="description" ><?php echo $categoryData['description']; ?></textarea>
 <div>
 <button type="submit" class="btn btn-warning" name="submitModify">Submit</button>
 <button type="submit" class="btn btn-warning" name="cancelModify">Cancel</button>

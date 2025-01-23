@@ -1,7 +1,7 @@
 :root{
-    --bittersweet: #ed6a5aff;
-    --barn-red: #720e07ff;
-    --caribbean-current: #00798cff;
+    --bittersweet: #FF6F61;
+    --plum: #DDA0DD;
+    --caribbean-current: #006994;
     --saffron: #fac748ff;
     --emerald: #06d6a0ff;
 }
@@ -33,6 +33,17 @@
   
   .bg-danger {
     --bs-bg-opacity: 1;
-    background-color: var(--barn-red) !important;
+    background-color: var(--plum) !important;
   }
-  
+   .btn-primary {
+    background-color: var(--bittersweet) !important;
+  }
+  .btn-secondary {
+    background-color: var(--caribbean-current) !important;
+  }
+  .btn-warning {
+    background-color: var(--caribbean-current) !important;
+  }
+  .btn-danger {
+    background-color: var(--plum) !important;
+  }
