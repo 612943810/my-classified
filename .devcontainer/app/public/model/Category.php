@@ -5,6 +5,7 @@ class Category {
  private $totalQuery;
   public function __construct() {
       $this->connectToDatabase();
+      
   }
   public function addCategories($name, $description) {
       // This function runs the add queries.
@@ -22,10 +23,12 @@ class Category {
      
             $mainId=$_GET['id'];
               $name = $_POST['name'];
-        $description = $_POST['description'];
-           $sqlStatments ="UPDATE `my-classified-category` 
+        $description = $_POST['description'];  
+        $pdoInit=new PDO('mysql:host=db;dbname=my-classified',"root","mysqlcee");
+          $sqlStatments ="UPDATE `my-classified-category` 
                          SET `name` = :name, `description` = :description WHERE `id` = :id";
-            $sqlQuery = $this->pdo->prepare($sqlStatments);
+                       
+            $sqlQuery = $pdoInit->prepare($sqlStatments);
             $sqlQuery->bindValue(':id', $mainId);
             $sqlQuery->bindValue(':name', $name);
             $sqlQuery->bindValue(':description', $description);

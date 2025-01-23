@@ -38,6 +38,5 @@ $displayCategories->displayCategoryResults();
         
 </tbody>  
 </table>
-<
 </body>
 </html>
