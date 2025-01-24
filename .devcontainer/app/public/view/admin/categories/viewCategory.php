@@ -11,8 +11,7 @@ include_once(__DIR__.'/../../../model/Category.php');
        <meta http-equiv='X-UA-Compatible' content='ie=edge'>
        <title>My Classified</title>
        <link rel='stylesheet' href='/css/bootstrap.css'>
-       <link rel='stylesheet' href='/css/style.css'>
-   </head>
+       <link rel='stylesheet'   href='/css/style.css'> 
    <body>
 <h1>Categories</h1>
 

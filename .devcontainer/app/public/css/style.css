@@ -1,24 +1,25 @@
+
 :root{
-    --bittersweet: #FF6F61;
-    --plum: #DDA0DD;
-    --caribbean-current: #006994;
-    --saffron: #fac748ff;
-    --emerald: #06d6a0ff;
+  --buff: #db995aff;
+  --amaranth-purple: #a4243bff;
+  --verdigris: #64b6acff;
+  --sapphire: #4059adff;
+  --yale-blue: #083d77ff;
 }
 
 .bg-primary {
     --bs-bg-opacity: 1;
-    background-color: var(--bittersweet) !important;
+    background-color: var(--sapphire) !important;
   }
   
   .bg-secondary {
     --bs-bg-opacity: 1;
-    background-color: var(--caribbean-current) !important;
+    background-color: var(--yale-blue) !important;
   }
   
   .bg-success {
     --bs-bg-opacity: 1;
-    background-color: var(--emerald) !important;
+    background-color: var(--verdigris) !important;
   }
   
   .bg-info {
@@ -28,22 +29,25 @@
   
   .bg-warning {
     --bs-bg-opacity: 1;
-    background-color: var(--saffron)!important;
+    background-color: var(--buff)!important;
   }
   
   .bg-danger {
     --bs-bg-opacity: 1;
-    background-color: var(--plum) !important;
+    background-color: var(--amaranth-purple) !important;
   }
    .btn-primary {
-    background-color: var(--bittersweet) !important;
+    background-color: var(--sapphire) !important;
   }
   .btn-secondary {
-    background-color: var(--caribbean-current) !important;
+    background-color: var(--yale-blue) !important;
   }
   .btn-warning {
-    background-color: var(--caribbean-current) !important;
+    background-color: var(--buff) !important;
   }
-  .btn-danger {
-    background-color: var(--plum) !important;
+  .btn-danger ,.btn-danger:focus ,.btn-danger:hover {
+    background-color: var(--amaranth-purple) !important;
+  }
+  .btn-success {
+    background-color: var(--verdigris) !important;
   }
