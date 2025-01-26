@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once(__DIR__.'/../controller/CategoryController.php');
-require_once(__DIR__. '/../view/navigation.php');
+include_once(__DIR__.'/../../../controller/CategoryController.php');
+require_once(__DIR__. '/../../../view/navigation.php');
 $_SESSION['loggedIn']=true;
 ?>
 <html lang='en'>
@@ -25,7 +25,7 @@ $displayCategoriesTwo->displayCategoryResults();
 </div>
 </nav>
 <article class=" col-7">
-<button type="button" class="btn btn-warning float-md-right"><a href="/view/admin/addItems.php">Add New Item</a></button>
+<button type="button" class="btn btn-warning float-md-right"><a href="/view/admin/items/addItems.php">Add New Item</a></button>
 </article>
 </body>
 </html>

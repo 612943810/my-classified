@@ -67,7 +67,7 @@ class itemsDatabase
        $totalQuery=$sqlQuery->fetch();
       $totalCount=0;
       while ($totalQuery!=null) {
-          if (session_status()==PHP_SESSION_ACTIVE) {
+         if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
               while ($totalQuery) {
                   print('<article class=" col-9">');
                   print("<h1>{$totalQuery['title']}</h1>");
@@ -79,7 +79,7 @@ class itemsDatabase
                   print('</article>');
                   $totalQuery=$sqlQuery->fetch();
               }
-          } elseif (session_status()==PHP_SESSION_NONE) {
+          } else{
               while ($totalQuery) {
                   print('<article class=" col-9">');
                   print("<h1>{$totalQuery['title']}</h1>");

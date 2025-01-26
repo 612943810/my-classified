@@ -1,8 +1,8 @@
 <?
 //This script displays the add item for admin.
-require_once(__DIR__. '/../../controller/itemController.php');
-require_once(__DIR__ . '/../../controller/CategoryController.php');
-require_once(__DIR__.'/../../view/navigation.php');
+require_once(__DIR__. '/../../../controller/itemController.php');
+require_once(__DIR__ . '/../../../controller/CategoryController.php');
+require_once(__DIR__.'/../../../view/navigation.php');
 $itemyData=new ItemController();
 $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionInput','priceEntry','imageValue');
  ?>

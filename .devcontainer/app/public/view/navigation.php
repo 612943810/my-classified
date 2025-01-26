@@ -14,6 +14,9 @@
             <ul class='navbar-nav ms-auto'>    
                 <li class='nav-item'>
                    <a class='nav-link text-warning' href='/search'>Search</a> 
+                </li> 
+                <li class='nav-item'>
+                    <a class='nav-link text-warning' href='/../view/admin/items/viewItems.php'>Items</a>
                 </li>
                 <?php
                 if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
@@ -24,9 +27,7 @@
                 <?php
                 } else {
                 ?>      
-                 <li class='nav-item'>
-                    <a class='nav-link text-warning' href='/../view/viewItems.php'>Items</a>
-                </li>
+                
                 <li class='nav-item dropdown'>
                     <a class='nav-link dropdown-toggle text-warning' href='/categories' id='dropdownMenu'>Categories</a>
                 </li>
