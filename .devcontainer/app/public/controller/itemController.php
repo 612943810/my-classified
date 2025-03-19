@@ -1,5 +1,5 @@
 <?php  
-require_once(__DIR__. '/./../model/itemDatabase.php');
+require_once(__DIR__. '/./../model/Item.php');
 
 class ItemController{
     use PDOTrait;
@@ -24,7 +24,7 @@ public function __construct() {
             $sqlQuery->bindValue(':categoryID', $_POST[$categoryDropdown]);
             $sqlQuery->execute();
             $categoryTotalQuery = $sqlQuery->fetch();
-            $categoryOperations = new itemsDatabase();
+            $categoryOperations = new Item();
 
 
             $categoryOperations->addItems($categoryTotalQuery['id']);
@@ -50,7 +50,7 @@ public function __construct() {
 
                 header('Location: https://' . __DIR__ . '/../../view/viewItems');
             }
-            $categoryOperations = new itemsDatabase();
+            $categoryOperations = new Item();
             $categoryOperations->modifyItems($modifyButton, $title, $descriptionItem, $_SESSION['imageEntry'], $priceItem);
         }
         show_source(__FILE__);

@@ -36,7 +36,7 @@ $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionI
 <?php
 $totalQuery = new PDO('mysql:host=db;dbname=my-classified', 'root', 'mysqlcee');
 $displayCategories = new Category($totalQuery);
-$displayCategories->displayCategoryResults();  
+$displayCategories->getDropdownMenu();     
 ?>    
    
 </select>

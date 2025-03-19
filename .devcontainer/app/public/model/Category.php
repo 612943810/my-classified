@@ -59,6 +59,20 @@ class Category {
           } 
            $sqlQuery->closeCursor();
     }
+    public function getAllCategories() {
+      $sqlStatments = "SELECT * FROM `my-classified-category`";
+      $sqlQuery = $this->pdo->prepare($sqlStatments);
+      $sqlQuery->execute();
+      $category = $sqlQuery->fetchAll();
+      $sqlQuery->closeCursor();
+      return $category;
+  }
+  public function getDropdownMenu() {
+    $categoryList=$this->getAllCategories();
+    foreach($categoryList as $categoryName){
+      echo "<option value ='". $categoryName['id'] . "'>". $categoryName['name'] . "</option>";
+    }
+}
 
   // This function retrieves a category by its ID.
   public function getCategoriesById($id) {
