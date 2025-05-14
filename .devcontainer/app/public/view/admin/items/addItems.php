@@ -17,7 +17,7 @@ $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionI
    </head>
  
    <body>
-<form class="form-group" action="viewCategory.php"name="categoryForm" method="post" enctype="multipart/form-data">
+<form class="form-group" action="/items/add" name="categoryForm" method="post" enctype="multipart/form-data">
 <div class="form-group">
 <h1 class="lead">Add new Item</h1>
 <div>
