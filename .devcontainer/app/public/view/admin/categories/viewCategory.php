@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once(__DIR__. '/../../../view/navigation.php'); 
-include_once(__DIR__.'/../../../model/Category.php');
+
 
 ?>
 <html lang='en'>
@@ -21,20 +21,30 @@ include_once(__DIR__.'/../../../model/Category.php');
 </ul>
 </div>
 <table border="1" width="100%">
-  <tbody>
-    <tr>
+<thead>
+  
       <th>Name</th>
       <th>Description</th>
       <th>Number of Items</th>
       <th>Action</th>
-      <tr>
+</thead>
+   <tbody>   
     
-          <?php
+   </tr>
+   
+      <?php foreach($categories as $cat) : ?>     
+    <tr>
+    
+ 
+     <td><?php echo $cat['name']; ?></td> 
+       <td><?php echo $cat['description']; ?></td>
+         <td><?php echo $cat['number_of_items']; ?></td>
+         <td>
+         <button type="button" class="btn btn-primary"><a href="/categories/modify?id=<?php echo $cat['id']; ?>">Modify</a></button>
+         <button type="button" class="btn btn-danger"><a href="/categories/delete?id=<?php echo $cat['id']; ?>">Delete</a></button>
 
-$displayCategories=new Category();
-$displayCategories->displayCategoryResults();  
- ?> 
-        
+</tr>
+<?php endforeach; ?>     
 </tbody>  
 </table>
 </body>

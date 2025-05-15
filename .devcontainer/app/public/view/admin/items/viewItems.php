@@ -29,7 +29,7 @@ $itemsModel = new Item();
                 <div class="nav flex-column px-4">
                     <?php
                
-                    $categoryController->displayCategoryResults();
+            
                     ?>
                 </div>
             </nav>

@@ -12,7 +12,8 @@ switch($mainPath){
      $homeControl->home();
          break;
      case "/categories":
-          require __DIR__.'/view/admin/categories/viewCategory.php';
+          $categoryData=new CategoryController();
+          $categoryData->viewCategories();
           break;
      case "/categories/add":
         $categoryData=new CategoryController();

@@ -40,25 +40,6 @@ class Category {
       }
    }
    //This function displays all the function records.
-   public function displayCategoryResults()
-   {
-       $sqlStatments = "SELECT * FROM `my-classified-category`";
-       $sqlQuery = $this->pdo->prepare($sqlStatments);
-       $sqlQuery->execute();
-       $totalQuery=$sqlQuery->fetch();
-          while ($totalQuery!=null) {
-          // $totalCount++;
-          // if ($_SERVER['REQUEST_URI']=="/comp1230/assignments/assignment2/view/viewCategory.php") {
-               echo"<tr>";
-               print('<td>'.$totalQuery['name']."</td>");
-               print('<td>'.$totalQuery['description']."</td>");
-               print('<td>To be contunie</td>');
-               print('<td><button class="btn btn-warning"><a href=categories/modify?id='.$totalQuery["id"].'>Modify</a></button></td>');
-               print('<td><button class="btn btn-danger"><a href=categories/delete?id='.$totalQuery["id"].'>Delete</a></button></td>');
-               $totalQuery=$sqlQuery->fetch();  
-          } 
-           $sqlQuery->closeCursor();
-    }
     public function getAllCategories() {
       $sqlStatments = "SELECT * FROM `my-classified-category`";
       $sqlQuery = $this->pdo->prepare($sqlStatments);
@@ -67,13 +48,6 @@ class Category {
       $sqlQuery->closeCursor();
       return $category;
   }
-  public function getDropdownMenu() {
-    $categoryList=$this->getAllCategories();
-    foreach($categoryList as $categoryName){
-      echo "<option value ='". $categoryName['id'] . "'>". $categoryName['name'] . "</option>";
-    }
-}
-
   // This function retrieves a category by its ID.
   public function getCategoriesById($id) {
       $sqlStatments = "SELECT * FROM `my-classified-category` WHERE id = :id";
@@ -92,18 +66,11 @@ class Category {
       $sqlQuery->execute();
       $sqlQuery->closeCursor();                     
    }         
-  /**
-   * This gets the value of totalQuery
-   */ 
   public function getTotalQuery()
   {
     return $this->totalQuery;
   }
 
-  /**
-   * Set the valueThis gets the value of totalQuery
-  
-   */ 
   public function setTotalQuery($totalQuery)
   {
     $this->totalQuery = $totalQuery;
