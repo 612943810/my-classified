@@ -25,6 +25,7 @@ public function addCategories($name, $description) {
       require_once(__DIR__.'/../view/admin/categories/viewCategory.php');
         return $categories;
     }
+
     //This function retrieves a category by its ID.
     public function deleteCategory($id) {
         $this->category->deleteCategory($id);

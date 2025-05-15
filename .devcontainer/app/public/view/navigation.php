@@ -16,7 +16,7 @@
                    <a class='nav-link text-warning' href='/search'>Search</a> 
                 </li> 
                 <li class='nav-item'>
-                    <a class='nav-link text-warning' href='/../view/admin/items/viewItems.php'>Items</a>
+                    <a class='nav-link text-warning' href='/items'>Items</a>
                 </li>
                 <?php
                 if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {

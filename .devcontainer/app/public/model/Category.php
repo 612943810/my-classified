@@ -58,6 +58,14 @@ class Category {
       $sqlQuery->closeCursor();
       return $category;
   }
+  public function getCategoryName() {
+    $sqlStatments = "SELECT  name FROM `my-classified-category`";
+    $sqlQuery = $this->pdo->prepare($sqlStatments);
+    $sqlQuery->execute();
+    $categoryName = $sqlQuery->fetchAll(PDO::FETCH_ASSOC);
+    $sqlQuery->closeCursor();
+    return $categoryName;
+}
    public function deleteCategory($id) {
       // This function runs the delete queries.
       $sqlStatments = "DELETE FROM `my-classified-category` WHERE id = :id";

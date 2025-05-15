@@ -42,6 +42,7 @@ require_once(__DIR__. '/../../../view/navigation.php');
          <td>
          <button type="button" class="btn btn-primary"><a href="/categories/modify?id=<?php echo $cat['id']; ?>">Modify</a></button>
          <button type="button" class="btn btn-danger"><a href="/categories/delete?id=<?php echo $cat['id']; ?>">Delete</a></button>
+         </td>
 
 </tr>
 <?php endforeach; ?>     

@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__.'/controller/HomeController.php');
 include_once(__DIR__.'/controller/CategoryController.php');
+include_once(__DIR__.'/controller/ItemController.php');
 include_once(__DIR__.'/controller/UserController.php');
 $mainPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); 
 $totalQuery = new PDO('mysql:host=db;dbname=my-classified', 'root', 'mysqlcee');
@@ -50,7 +51,8 @@ switch($mainPath){
           }
           break;
           case "/items":
-               require __DIR__.'/view/admin/items/viewItems.php';
+               $itemData = new ItemController();
+               $itemData->createSideMenu();
                break;
           case "/items/add":
                if ($_SERVER['REQUEST_METHOD'] === 'POST') {

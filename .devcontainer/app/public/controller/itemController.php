@@ -1,7 +1,8 @@
 <?php  
-require_once(__DIR__. '/./../model/Item.php');
+require_once(__DIR__. '/../model/Item.php');
+require_once(__DIR__. '/../model/Category.php');
 
-class ItemController{
+class ItemController extends Item{
     use PDOTrait;
 public function __construct() {
    $this->connectToDatabase();
@@ -54,5 +55,11 @@ public function __construct() {
             $categoryOperations->modifyItems($modifyButton, $title, $descriptionItem, $_SESSION['imageEntry'], $priceItem);
         }
         show_source(__FILE__);
+    }
+    public function  createSideMenu(){
+        $categoryController = new Category();
+        $categoryData=$categoryController->getCategoryName();
+        require_once(__DIR__ . '/../view/admin/items/viewItems.php');
+        return $categoryData;
     }
 }
