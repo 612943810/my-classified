@@ -1,10 +1,6 @@
 <?
 //This script displays the add item for admin.
-require_once(__DIR__. '/../../../controller/itemController.php');
-require_once(__DIR__ . '/../../../controller/CategoryController.php');
 require_once(__DIR__.'/../../../view/navigation.php');
-$itemyData=new ItemController();
-$itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionInput','priceEntry','imageValue');
  ?>
  <html lang='en'>
 <head>
@@ -32,13 +28,6 @@ $itemyData->addItemsOutput('dropDownList','submitLink','textInput','descriptionI
 <label for="descriptionInput">Category</label> 
 <select name="dropDownList" id="dropDownList"  value="text">
 <label for="dropDownList">Category</label>
-
-<?php
-$totalQuery = new PDO('mysql:host=db;dbname=my-classified', 'root', 'mysqlcee');
-$displayCategories = new Category($totalQuery);
-$displayCategories->getDropdownMenu();     
-?>    
-   
 </select>
 
 <div>

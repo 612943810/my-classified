@@ -7,7 +7,7 @@
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 	"customizations": {
         "vscode": {
-            "extensions": ["bmewburn.vscode-intelephense-client","xdebug.php-pack"]
+            "extensions": ["bmewburn.vscode-intelephense-client","xdebug.php-pack","oracle.mysql-shell-for-vs-code"]
 		}
 	}
 	// Features to add to the dev container. More info: https://containers.dev/features.
