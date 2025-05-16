@@ -11,18 +11,21 @@ class Item
     $this->connectToDatabase();
   }
   //This function adds the items.
-  public function addItems($categoryID)
+  public function addItems($itemId, $itemTitle, $itemDescription, $imageUpload, $itemPrice, $categoryID)
   {
-
-    $itemSQLStatments = "INSERT INTO `myclassified_items`(`id`, `title`, `description`, `image`,`price`, `cat_id`) VALUES (NULL,:categoryTitle,:categoryDescription,:imageUpload,:itemPrice,:categoryID)";
+    // if(isset($_POST[$itemId])&&isset($_POST[$itemTitle])&&isset($_POST[$itemDescription])&&isset($_POST[$imageUpload])&&isset($_POST[$itemPrice])){
+    $_SESSION['itemId'] = $_POST[$itemId];
+    $_SESSION['itemTitle'] = $_POST[$itemTitle];
+    $_SESSION['categoryDescription'] = $_POST[$itemDescription];
+    $_SESSION['imageUpload'] = $_FILES[$imageUpload]['name'];
+    $_SESSION['priceInput'] = $_POST[$itemPrice];
+ $itemSQLStatments = "INSERT INTO `myclassified_items`(`id`, `title`, `description`, `image`,`price`, `cat_id`) VALUES (NULL,:categoryTitle,:categoryDescription,:imageUpload,:itemPrice,:categoryID)";
     $sqlQuery = $this->pdo->prepare($itemSQLStatments);
     $sqlQuery->bindValue(':categoryTitle', $_SESSION['itemTitle']);
     $sqlQuery->bindValue(':categoryDescription', $_SESSION['itemDescription']);
     $sqlQuery->bindValue(':imageUpload', $_SESSION['imageEntry']);
     $sqlQuery->bindValue(':itemPrice', $_SESSION['priceInput']);
     $sqlQuery->bindValue(':categoryID', $categoryID);
-
-
     $sqlQuery->execute();
     $sqlQuery->closeCursor();
   }

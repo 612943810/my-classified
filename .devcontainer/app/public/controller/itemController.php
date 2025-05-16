@@ -4,37 +4,27 @@ require_once(__DIR__. '/../model/Category.php');
 
 class ItemController extends Item{
     use PDOTrait;
+    private $item;
 public function __construct() {
-   $this->connectToDatabase();
+   $this->item=new Item();
 }
     private $categoryTitle;
     private $categoryDescription;
 
-    public function addItemsOutput($categoryDropdown, $submitButton, $title, $descriptionItem, $priceEntry, $imageInput)
+    public function addItems($itemId, $itemTitle, $itemDescription, $imageUpload, $itemPrice, $categoryID)
     {
-      
-        if (isset($_POST[$submitButton])) {
-            $_SESSION['imageEntry'] = file_get_contents($_FILES[$imageInput]['name']);
-            $_SESSION['itemTitle'] = $_POST[$title];
-            $_SESSION['itemDescription'] = $_POST[$descriptionItem];
-            $_SESSION['categoryDropdown'] = $_POST[$categoryDropdown];
-            $_SESSION['priceInput'] = $_POST[$priceEntry];
+        session_start();
+        if (isset($_POST[$itemId]) && isset($_POST[$itemTitle]) && isset($_POST[$itemDescription]) && isset($_FILES[$imageUpload]) && isset($_POST[$itemPrice])) {
+            $_SESSION['itemId'] = $_POST[$itemId];
+            $_SESSION['itemTitle'] = $_POST[$itemTitle];
+            $_SESSION['categoryDescription'] = $_POST[$itemDescription];
+            $_SESSION['imageUpload'] = $_FILES[$imageUpload]['name'];
+            $_SESSION['priceInput'] = $_POST[$itemPrice];
 
-            $categorySQLStatments = "SELECT `id` FROM my-classified-category WHERE `name`=:categoryID";
-            $sqlQuery = $this->pdo->prepare($categorySQLStatments);
-            $sqlQuery->bindValue(':categoryID', $_POST[$categoryDropdown]);
-            $sqlQuery->execute();
-            $categoryTotalQuery = $sqlQuery->fetch();
-            $categoryOperations = new Item();
-
-
-            $categoryOperations->addItems($categoryTotalQuery['id']);
-
-
-            header('Location: https://' . __DIR__. '/../view/viewItems.php');
-            print('<p class="alert alert-success" role="alert">Sucesss<p>');
-
-            $sqlQuery->closeCursor();
+            header('Location: https://' . __DIR__ . '/../../view/admin/items/viewItems.php');
+        } else
+    {
+    
         }
 
     }
