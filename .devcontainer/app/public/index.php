@@ -4,7 +4,7 @@ include_once(__DIR__.'/controller/CategoryController.php');
 include_once(__DIR__.'/controller/ItemController.php');
 include_once(__DIR__.'/controller/UserController.php');
 $mainPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); 
-$totalQuery = new PDO('mysql:host=db;dbname=my-classified', 'root', 'mysqlcee');
+$totalQuery = new PDO('mysql:dbname=my-classified;host=db', 'root', 'mysqlcee');
 switch($mainPath){
     case ' ':
     case '/':

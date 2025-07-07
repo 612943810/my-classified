@@ -17,7 +17,7 @@ services:
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
-
+ 
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
     #network_mode: service:db
 
@@ -37,7 +37,7 @@ services:
             MYSQL_PASSWORD: 'mysqlcee'
             MYSQL_DATABASE: 'my-classified'
         ports:
-          - 3306:3306
+          - 3307:3306
         volumes:
             - mysqldata:/var/lib/mysql
        
