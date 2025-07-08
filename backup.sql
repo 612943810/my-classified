@@ -27,8 +27,9 @@ CREATE TABLE `my-classified-category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
+  `number_of_items` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +40,11 @@ LOCK TABLES `my-classified-category` WRITE;
 /*!40000 ALTER TABLE `my-classified-category` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `my-classified-category` VALUES
-(1,'Apple','Seafood');
+(39,'Rice','Grain',NULL),
+(40,'Ants','Insect',NULL),
+(41,'Seafood','A list of seafood',NULL),
+(42,'Books ','A wide variety of  reading for your pleasure',NULL),
+(43,'Bread','All types of whole wheat goodness.',NULL);
 /*!40000 ALTER TABLE `my-classified-category` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -52,10 +57,10 @@ DROP TABLE IF EXISTS `my-classified-members`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `my-classified-members` (
-  `id` varchar(45) NOT NULL,
-  `username` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `username` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`username`,`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -67,8 +72,39 @@ LOCK TABLES `my-classified-members` WRITE;
 /*!40000 ALTER TABLE `my-classified-members` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `my-classified-members` VALUES
-('1',1,'2123');
+(1,'test','demo');
 /*!40000 ALTER TABLE `my-classified-members` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `myclassified_items`
+--
+
+DROP TABLE IF EXISTS `myclassified_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `myclassified_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL,
+  `description` varchar(45) DEFAULT NULL,
+  `image` blob DEFAULT NULL,
+  `price` decimal(10,0) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cat_id_idx` (`cat_id`),
+  CONSTRAINT `cat_id` FOREIGN KEY (`cat_id`) REFERENCES `my-classified-category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `myclassified_items`
+--
+
+LOCK TABLES `myclassified_items` WRITE;
+/*!40000 ALTER TABLE `myclassified_items` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `myclassified_items` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -81,4 +117,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-07-08  2:04:56
+-- Dump completed on 2025-07-08  2:23:32
