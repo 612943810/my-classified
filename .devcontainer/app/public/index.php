@@ -58,8 +58,9 @@ switch($mainPath){
                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $title = filter_input(INPUT_POST, 'textInput');
                     $description = filter_input(INPUT_POST, 'descriptionInput');
-                    $categoryData->addCategories($name, $description);
-                    header('Location:/categories');
+                   $itemData = new  ItemController();
+                   $itemData->addItems($title, $description);
+                    header('Location:/items');
                }
                require __DIR__.'/view/admin/items/addItem.php';
                break;
