@@ -11,22 +11,24 @@ public function __construct() {
     private $categoryTitle;
     private $categoryDescription;
 
-    public function addItems($itemId, $itemTitle, $itemDescription, $imageUpload, $itemPrice, $categoryID)
+    public function addItems( $itemTitle, $itemDescription, $imageUpload, $itemPrice, $categoryID)
     {
-       if (isset($_POST[$itemId]) && isset($_POST[$itemTitle]) && isset($_POST[$itemDescription]) && isset($_FILES[$imageUpload]) && isset($_POST[$itemPrice])) {
-            $this->item->addItems($itemId, $itemTitle, $itemDescription, $_FILES[$imageUpload]['name'], $itemPrice, $categoryID);
-        }
+      $this->item->addItems($itemTitle, $itemDescription, $_FILES[$imageUpload]['name'], $itemPrice, $categoryID);
+    
     }
-    public function editItems($modifyButton, $title, $descriptionItem, $imageInput, $priceItem)
+     public function editItems($modifyButton, $title, $descriptionItem, $imageInput, $priceItem)
     {
-        if (isset($_POST[$title]) && isset($_POST[$descriptionItem]) && isset($_FILES[$imageInput]) && isset($_POST[$priceItem])) {
-            $this->item->modifyItems($modifyButton, $title, $descriptionItem, $_FILES[$imageInput]['name'], $priceItem);
-        }
+    $this->item->modifyItems($modifyButton, $title, $descriptionItem, $_FILES[$imageInput]['name'], $priceItem);
+
     }
-    public function  createSideMenu(){
-        $categoryController = new Category();
-        $categoryData=$categoryController->getCategoryName();
+    public function listItems()
+    {   
+        $itemModel = new Item();
+        $items = $itemModel->displayItemsResults();
+
+        $categoryModel = new Category();
+        $categoryData = $categoryModel->getCategoryName();
+
         require_once(__DIR__ . '/../view/admin/items/viewItems.php');
-        return $categoryData;
     }
 }

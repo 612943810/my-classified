@@ -52,17 +52,21 @@ switch($mainPath){
           break;
           case "/items":
                $itemData = new ItemController();
-               $itemData->createSideMenu();
+               $itemData->listItems();
                break;
           case "/items/add":
                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $title = filter_input(INPUT_POST, 'textInput');
                     $description = filter_input(INPUT_POST, 'descriptionInput');
-                   $itemData = new  ItemController();
-                   $itemData->addItems($title, $description);
+                    $price = filter_input(INPUT_POST, 'priceEntry');
+                    $image_field_name = 'image';
+                    $categoryID = filter_input(INPUT_POST, 'dropDownList');
+                    $itemData = new  ItemController();
+                    $itemData->addItems($title, $description, $image_field_name, $price, $categoryID);
                     header('Location:/items');
+                    exit();
                }
-               require __DIR__.'/view/admin/items/addItem.php';
+               require __DIR__.'/view/admin/items/addItems.php';
                break;
           case "/items/modify":
                require __DIR__.'/view/admin/items/modifyItem.php';

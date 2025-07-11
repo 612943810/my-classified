@@ -41,5 +41,30 @@ $_SESSION['loggedIn'] = true;
             </main>
         </div>
     </div>
+    <table border="1" width="100%">
+<thead>
+  
+      <th>Name</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Action</th>
+</thead>
+   <tbody>   
+
+   
+      <?php foreach($items as $it) : ?>     
+    <tr>
+        <td><?php echo $it['title']; ?></td>
+        <td><?php echo $it['description']; ?></td>
+        <td><img src="/images/<?php echo $it['image']; ?>" alt="Item Image" width="100"></td>
+        <td>
+            <a href="/items/modify?idModify=<?php echo $it['id']; ?>" class="btn btn-primary">Modify</a>
+            <a href="/items/delete?idDelete=<?php echo $it['id']; ?>" class="btn btn-danger">Delete</a>
+        </td>           
+
+</tr>
+<?php endforeach; ?>     
+</tbody>  
+</table>
 </body>
 </html>

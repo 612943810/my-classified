@@ -35,7 +35,7 @@ require_once(__DIR__.'/../../../view/navigation.php');
 <input type="text" name="priceEntry" id="">  
 <br>
 <label for="imageEntry">Images</label>
-<input type="file" name="imageValue" id="imageValue">
+<input type="file" name="image" id="imageValue">
 <button type="submit"class="btn btn-warning" name="submitLink" > Save Changes</button>
 <button type="submit" class="btn btn-warning"> Cancel</button>
 </div>
