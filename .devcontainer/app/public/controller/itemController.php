@@ -13,8 +13,13 @@ public function __construct() {
 
     public function addItems( $itemTitle, $itemDescription, $imageUpload, $itemPrice, $categoryID)
     {
-      $this->item->addItems($itemTitle, $itemDescription, $_FILES[$imageUpload]['name'], $itemPrice, $categoryID);
-    
+      $imageContent = null;
+     
+      if (isset($_FILES[$imageUpload]) && $_FILES[$imageUpload]['error'] === UPLOAD_ERR_OK) {
+        $imageContent = file_get_contents($_FILES[$imageUpload]['tmp_name']);
+      }
+
+      $this->item->addItems($itemTitle, $itemDescription, $imageContent, $itemPrice, $categoryID);
     }
      public function editItems($modifyButton, $title, $descriptionItem, $imageInput, $priceItem)
     {

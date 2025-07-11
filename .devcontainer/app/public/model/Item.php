@@ -17,7 +17,7 @@ class Item
     $sqlQuery = $this->pdo->prepare($itemSQLStatments);
     $sqlQuery->bindValue(':categoryTitle', $title);
     $sqlQuery->bindValue(':categoryDescription', $description);
-    $sqlQuery->bindValue(':imageUpload', $image);
+    $sqlQuery->bindValue(':imageUpload', $image, PDO::PARAM_LOB);
     $sqlQuery->bindValue(':itemPrice', $price);
     $sqlQuery->bindValue(':categoryID', $categoryID);
     $sqlQuery->execute();
@@ -61,9 +61,9 @@ class Item
       $sqlStatments = "SELECT * FROM `my-classified_items`";
       $sqlQuery = $this->pdo->prepare($sqlStatments);
       $sqlQuery->execute();
-      $item = $sqlQuery->fetchAll();
+      $items = $sqlQuery->fetchAll(PDO::FETCH_ASSOC);
       $sqlQuery->closeCursor();
-      return $item;
+      return $items;
   }
 
 
