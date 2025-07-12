@@ -13,7 +13,7 @@ class Item
   //This function adds the items.
   public function addItems($title, $description, $image, $price, $categoryID)
   {
- $itemSQLStatments = "INSERT INTO `myclassified_items`(`id`, `title`, `description`, `image`,`price`, `cat_id`) VALUES (NULL,:categoryTitle,:categoryDescription,:imageUpload,:itemPrice,:categoryID)";
+ $itemSQLStatments = "INSERT INTO `my-classified_items`(`id`, `title`, `description`, `image`,`price`, `cat_id`) VALUES (NULL,:categoryTitle,:categoryDescription,:imageUpload,:itemPrice,:categoryID)";
     $sqlQuery = $this->pdo->prepare($itemSQLStatments);
     $sqlQuery->bindValue(':categoryTitle', $title);
     $sqlQuery->bindValue(':categoryDescription', $description);

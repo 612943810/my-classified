@@ -56,12 +56,19 @@ $_SESSION['loggedIn'] = true;
     <tr>
         <td><?php echo $it['title']; ?></td>
         <td><?php echo $it['description']; ?></td>
-        <td>
-         <img src = "data:image/png;base64,' . <?php base64_encode($row['product_image'])?> . '" width = "50px" height = "50px"/>'
-        </td>
-        <td>
-            <a href="/items/modify?idModify=<?php echo $it['id']; ?>" class="btn btn-primary">Modify</a>
-            <a href="/items/delete?idDelete=<?php echo $it['id']; ?>" class="btn btn-danger">Delete</a>
+ <td>
+    <?php if (!empty($it['image'])): ?>
+        <img 
+            src="data:image/jpeg;base64,<?php echo base64_encode($it['image']); ?>" 
+            alt="Item Image" 
+            style="max-width: 100px;">
+    <?php else: ?>
+        <span>No image</span>
+    <?php endif; ?>
+</td>
+
+            <td><a href="/items/modify?idModify=<?php echo $it['id']; ?>" class="btn btn-primary">Modify</a></td>
+           <td><a href="/items/delete?idDelete=<?php echo $it['id']; ?>" class="btn btn-danger">Delete</a></td> 
         </td>           
 
 </tr>

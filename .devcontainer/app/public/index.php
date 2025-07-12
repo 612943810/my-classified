@@ -59,11 +59,14 @@ switch($mainPath){
                     $title = filter_input(INPUT_POST, 'textInput');
                     $description = filter_input(INPUT_POST, 'descriptionInput');
                     $price = filter_input(INPUT_POST, 'priceEntry');
-                    $image_field_name = 'image';
+                 
+                    $imageContent = file_get_contents($_FILES['image']['tmp_name']);
+                    
+
                     $categoryID = filter_input(INPUT_POST, 'dropDownList');
                     $itemData = new  ItemController();
-                    $itemData->addItems($title, $description, $image_field_name, $price, $categoryID);
-                    header('Location:/items');
+                    $itemData->addItems($title, $description, $imageContent, $price, $categoryID);
+                    header('Location: /items');
                     exit();
                }
                require __DIR__.'/view/admin/items/addItems.php';
